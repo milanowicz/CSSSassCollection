@@ -1,0 +1,407 @@
+// File: CSSSassCollectionMixins.scss
+// Author: Milanowicz
+// Date: 2014
+// Version: 0.0.1
+// Description: Sass Mixin Collection
+
+
+//########################################################
+//##               Sass Mixin Toolkit File              ##
+//########################################################
+
+@mixin FontFace ($FontName, $FontFile,
+                  $FontWeight: $FontWeight,
+                  $FontStyle: $FontStyle) {
+
+  @font-face {
+    font-family: "#{$FontName}";
+    src: url("#{$FontFile}-webfont.eot");
+    src: url("#{$FontFile}-webfont.eot?#iefix") format("embedded-opentype"),
+    url("#{$FontFile}-webfont.woff") format("woff"),
+    url("#{$FontFile}-webfont@ttf") format("truetype"),
+    url("#{$FontFile}-webfont.svg##{$FontName}") format("svg");
+    font-weight: $FontWeight;
+    font-style: $FontStyle;
+  }
+}
+
+
+// Font Style Mixins
+@mixin Text ($FontFamily,
+              $FontSize: $FontSize,
+              $Color: $ColorBlack,
+              $FontStyle: $FontStyle,
+              $LineHeight: $LineHeight,
+              $TextTransform: $TextTransform,
+              $FontWeight: $FontWeight) {
+
+  font-family: $FontFamily;
+  @include FontSize($FontSize);
+  color: $Color;
+  font-style: $FontStyle;
+  @include LineHeight($LineHeight);
+  text-transform: $TextTransform;
+  font-weight: $FontWeight;
+}
+
+@mixin FontSize ($FontSize: $FontSize) {
+  $remValue: ($FontSize / 16);
+  $pxValue: ($FontSize);
+  font-size: "#{$pxValue}px";
+  font-size: "#{$remValue}rem";
+}
+
+@mixin LineHeight ($LineHeight: $LineHeight) {
+  $remValue: ($LineHeight / 16);
+  $pxValue: ($LineHeight);
+  line-height: "#{$pxValue}px";
+  line-height: "#{$remValue}rem";
+}
+
+@mixin Hyphens ($WordBreak: break-all, $Hyphens: auto) {
+  -ms-word-break: $WordBreak;
+  word-break: $WordBreak;
+
+  // Non standard for webkit
+  word-break: break-word;
+
+  -webkit-hyphens: $Hyphens;
+  -moz-hyphens: $Hyphens;
+  hyphens: $Hyphens;
+}
+
+
+// HTML Helper
+
+@mixin OutlineBorder () {
+  border: 0 none;
+  outline: 0 none;
+}
+
+@mixin MarginPadding ($Margin: 0, $Padding: 0) {
+  margin: $Margin;
+  padding: $Padding;
+}
+
+
+// Background Image or Icon mixins
+
+@mixin BackgroundOpacity ($Color: $BackgroundColor, $Opacity: $Opacity) {
+
+  $RGBColor: rgb(red($Color), green($Color), blue($Color));
+  $RGBAColor: rgba(red($Color), green($Color), blue($Color), $Opacity);
+
+  background: $RGBColor;
+  background: transparent\9;
+  background: $RGBAColor;
+
+  // IE9 and down
+  //filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", argb($RGBAColor),argb($RGBAColor)); // IE9 and down
+}
+
+@mixin BackgroundImage ($Filename, $Width: auto, $Height: auto) {
+  background-image: url($Filename);
+  //$BigImage: `#{$Filename}@replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
+  @include BackgroundSize($Width $Height);
+
+  @media #{$HighDpi} {
+    background-image: url("#{$BigImage}");
+    @include BackgroundSize($Width $Height);
+  }
+}
+
+@mixin BackgroundIcon ($Filename, $Width: auto, $Height: auto) {
+  background-image: data-uri($Filename);
+  *background-image: url($Filename);
+  //$BigImage: ~`#{$Filename}.replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
+  @inclue BackgroundSize($Width $Height);
+
+  @media #{$HighDpi} {
+    background-image: data-uri("#{$BigImage}");
+    *background-image: url("#{$BigImage}");
+    @include BackgroundSize($Width $Height);
+  }
+}
+@mixin BackgroundIconSize ($Width: auto, $Height: auto) {
+  @include BackgroundSize($Width $Height);
+  @media #{$HighDpi} {
+    @include BackgroundSize($Width $Height);
+  }
+}
+
+@mixin BackgroundSize ($Arguments) {
+  -webkit-background-size: $Arguments;
+  -moz-background-size: $Arguments;
+  -ms-background-size: $Arguments;
+  -o-background-size: $Arguments;
+  background-size: $Arguments;
+
+  @if $Arguments == cover {
+    -ms-behavior: url($MSBackgroundStretch);
+    *behavior: url($MSBackgroundStretch);
+  } @else if $Arguments == contain {
+    -ms-behavior: url($MSBackgroundStretch);
+    *behavior: url($MSBackgroundStretch);
+  }
+}
+
+@mixin BackgroundClip ($Argument: $BackgroundClipType) {
+  -moz-background-clip: $Argument;
+  -webkit-background-clip: $Argument;
+  background-clip: $Argument;
+}
+
+@mixin BackgroundPosition ($X: 50%, $Y: 50%) {
+  background-position-x: $X;
+  background-position-y: $Y;
+  background-position: $X $Y;
+}
+
+@mixin BackgroundVisibility ($Arguments) {
+  -webkit-backface-visibility: $Arguments;
+  backface-visibility: $Arguments;
+}
+
+
+// HTML Box Styles
+
+@mixin BoxSize ($Width, $Height: 0) {
+  width: $Width;
+  @if $Height != 0 {
+    height: $Height;
+  } @else {
+    height: $Width;
+  }
+}
+
+@mixin BoxShadow ($Arguments) {
+  -webkit-box-shadow: $Arguments;
+  -moz-box-shadow: $Arguments;
+  box-shadow: $Arguments;
+  behavior: url($MSPIE);
+}
+@mixin BoxShadowInset ($offset-x:3px, $offset-y:3px, $blur-radius:3px, $spread-radius:3px, $color: $BoxShadowInsetColor) {
+  -webkit-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+  -moz-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+  box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+  behavior: url($MSPIE);
+}
+
+@mixin BoxRounded ($Radius: $BoxRoundedRaduis) {
+  -webkit-border-radius: $Radius;
+  -moz-border-radius: $Radius;
+  border-radius: $Radius;
+  @include BackgroundClip(padding-box);
+  behavior: url($MSPIE);
+}
+@mixin BoxRadius ($TopRight: 0, $BottomRight: 0, $BottomLeft: 0, $TopLeft: 0) {
+
+  -webkit-border-top-right-radius: $TopRight;
+  -webkit-border-bottom-right-radius: $BottomRight;
+  -webkit-border-bottom-left-radius: $BottomLeft;
+  -webkit-border-top-left-radius: $TopLeft;
+
+  -moz-border-radius-topright: $TopRight;
+  -moz-border-radius-bottomright: $BottomRight;
+  -moz-border-radius-bottomleft: $BottomLeft;
+  -moz-border-radius-topleft: $TopLeft;
+
+  border-top-right-radius: $TopRight;
+  border-bottom-right-radius: $BottomRight;
+  border-bottom-left-radius: $BottomLeft;
+  border-top-left-radius: $TopLeft;
+
+  @include BackgroundClip(padding-box);
+  behavior: url($MSPIE);
+}
+
+@mixin BoxSizing ($Type: $BoxSizingType) {
+  -webkit-box-sizing: $Type;
+  -moz-box-sizing: $Type;
+  box-sizing: $Type;
+  *behavior: url($MSBoxSizing);
+}
+
+@mixin GradientVertical ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
+  background-color: $StartColor;
+  background: -webkit-gradient(linear, left top, left bottom, from($StartColor), to($EndColor));
+  background: -webkit-linear-gradient(top, $StartColor, $EndColor);
+  background: -moz-linear-gradient(top, $StartColor, $EndColor);
+  background: -ms-linear-gradient(top, $StartColor, $EndColor);
+  background: -o-linear-gradient(top, $StartColor, $EndColor);
+  behavior: url($MSPIE);
+}
+@mixin GradientHorizontal ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
+  background-color: $StartColor;
+  background-image: -webkit-gradient(linear, left top, right top, from($StartColor), to($EndColor));
+  background-image: -webkit-linear-gradient(left, $StartColor, $EndColor);
+  background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
+  background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
+  background-image: -o-linear-gradient(left, $StartColor, $EndColor);
+  behavior: url($MSPIE);
+}
+
+@mixin Opacity ($Opacity: $Opacity) {
+  -moz-opacity: $Opacity;
+  -khtml-opacity: $Opacity;
+  -webkit-opacity: $Opacity;
+  opacity: $Opacity;
+  $opperc: ($Opacity * 100);
+  //-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opperc})";
+  //filter: ~"alpha(opacity=#{$opperc})";
+}
+
+
+// HTML5 Flexbox
+
+@mixin Flexbox () {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: box;
+}
+
+@mixin Flexbox ($Arguments) {
+  -webkit-box-flex: $Arguments;
+  -moz-box-flex:  $Arguments;
+  -webkit-flex:  $Arguments;
+  -ms-flex:  $Arguments;
+  flex:  $Arguments;
+}
+
+@mixin FlexboxOrder ($Arguments) {
+  -webkit-box-ordinal-group: $Arguments;
+  -moz-box-ordinal-group: $Arguments;
+  -ms-flex-order: $Arguments;
+  -webkit-order: $Arguments;
+  order: $Arguments;
+}
+
+
+// CSS3 Animation, Transform and Transition mixins
+
+@mixin Animation ($Arguments) {
+  -webkit-animation: $Arguments;
+  -moz-animation: $Arguments;
+  -o-animation:$Arguments;
+  animation: $Arguments;
+}
+
+@mixin AnimationDelay ($Arguments) {
+  -webkit-animation-delay: $Arguments;
+  animation-delay: $Arguments;
+}
+
+@mixin AnimationDirection ($Arguments) {
+  -webkit-animation-direction: $Arguments;
+  -moz-animation-direction: $Arguments;
+  animation-direction: $Arguments;
+}
+
+@mixin AnimationDuration ($Arguments) {
+  -webkit-animation-duration: $Arguments;
+  animation-duration: $Arguments;
+}
+
+@mixin AnimationFillMode ($Arguments) {
+  -webkit-animation-fill-mode: $Arguments;
+  animation-fill-mode: $Arguments;
+}
+
+@mixin AnimationIterationCount ($Arguments) {
+  -webkit-animation-iteration-count: $Arguments;
+  animation-iteration-count: $Arguments;
+}
+
+@mixin AnimationPlayState ($Arguments) {
+  -webkit-animation-play-state: $Arguments;
+  animation-play-state: $Arguments;
+}
+
+@mixin Keyframes ($AnimationName) {
+  @-webkit-keyframes #{$AnimationName} {
+    @content;
+  }
+  @-moz-keyframes #{$AnimationName} {
+    @content;
+  }
+  @-o-keyframes #{$AnimationName} {
+    @content;
+  }
+  @keyframes #{$AnimationName} {
+    @content;
+  }
+}
+
+@mixin Transform ($Arguments) {
+  -webkit-transform: $Arguments;
+  -moz-transform: $Arguments;
+  -ms-transform: $Arguments;
+  -o-transform: $Arguments;
+  transform: $Arguments;
+}
+
+@mixin TransformOrigin ($X:center, $Y:center) {
+  -webkit-transform-origin: $X $Y;
+  -moz-transform-origin: $X $Y;
+  -ms-transform-origin: $X $Y;
+  -o-transform-origin: $X $y;
+  transform-origin: $X $y;
+}
+
+@mixin Transition ($Duration: $TransitionDuration,
+$Ease: $TransitionEase) {
+  -webkit-transition: all $Duration $Ease;
+  -moz-transition: all $Duration $Ease;
+  -o-transition: all $Duration $Ease;
+  transition: all $Duration $Ease;
+}
+
+@mixin TransitionDuration ($Duration: $TransitionDuration) {
+  -moz-transition-duration: $Duration;
+  -webkit-transition-duration: $Duration;
+  -o-transition-duration: $Duration;
+  transition-duration: $Duration;
+}
+
+@mixin Perspective ($Value: 1000) {
+  -webkit-perspective: $Value;
+  -moz-perspective: $Value;
+  -ms-perspective: $Value;
+  perspective: $Value;
+}
+
+@mixin Rotation ($Deg: $RotationDeg) {
+  @include Transform(rotate($Deg));
+}
+@mixin Scale ($Ratio: $ScaleRatio){
+  @include Transform(scale($Ratio));
+}
+@mixin Skew ($RotationDeg, $RotationDeg2) {
+  @include Transform(skew($RotationDeg, $RotationDeg2));
+}
+@mixin Translate ($X:0, $Y:0) {
+  @include Transform(translate($X, $Y));
+}
+@mixin Translate3D ($X:0, $Y:0, $Z: 0) {
+  @include Transform(translate($X, $Y, $Z));
+}
+
+
+// HTML Forms
+
+@mixin FormPlaceholderColor ($Color: $ColorBlack) {
+  &::-webkit-input-placeholder {
+    color:    $Color;
+  }
+  &:-moz-placeholder {
+    color:    $Color;
+  }
+  &::-moz-placeholder {
+    color:    $Color;
+  }
+  &:-ms-input-placeholder {
+    color:    $Color;
+  }
+}
