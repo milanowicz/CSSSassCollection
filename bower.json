@@ -1,6 +1,9 @@
 {
   "name": "CSSSassCollection",
   "version": "0.0.1",
-  "dependencies": {},
-  "devDependencies": {}
+  "ignore": [
+    ".gitignore",
+    "bower.json",
+    "README.md"
+  ]
 }
