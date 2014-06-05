@@ -1,17 +1,15 @@
-CSS Sass Collection
-================
+# CSS Sass Collection
+
 
 Sass Mixin Collection
 
 
-CSSSassCollectionMixins.scss
--------------
+## CSSSassCollectionMixins.scss
 
 Sass Mixin Toolkit for generate CSS2/3 StyleSheet files.
 
 
-CSSSassCollectionDefinitions.scss
--------------
+## CSSSassCollectionDefinitions.scss
 
 Change in what you need or not ;-)
 
@@ -55,3 +53,14 @@ Change in what you need or not ;-)
     $ScaleRatio: 1.5;
     $TransitionDuration: 0.2s;
     $TransitionEase: ease-out;
+
+
+# Bower
+
+Install Bower at the first time when you never used it before.
+
+    $ npm install -g bower
+
+Install via Bower
+
+    $ bower install CSSSassCollection
