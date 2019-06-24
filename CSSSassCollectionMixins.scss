@@ -1,7 +1,7 @@
 // File: CSSSassCollectionMixins.scss
 // Author: Milanowicz
-// Date: 2014
-// Version: 0.0.1
+// Date: 2019
+// Version: 0.0.2
 // Description: Sass Mixin Collection
 
 
@@ -47,15 +47,15 @@
 @mixin FontSize ($FontSize: $FontSize) {
   $remValue: ($FontSize / 16);
   $pxValue: ($FontSize);
-  font-size: "#{$pxValue}px";
-  font-size: "#{$remValue}rem";
+  font-size: #{$pxValue}px;
+  font-size: #{$remValue}rem;
 }
 
 @mixin LineHeight ($LineHeight: $LineHeight) {
   $remValue: ($LineHeight / 16);
   $pxValue: ($LineHeight);
-  line-height: "#{$pxValue}px";
-  line-height: "#{$remValue}rem";
+  line-height: #{$pxValue}px;
+  line-height: #{$remValue}rem;
 }
 
 @mixin Hyphens ($WordBreak: break-all, $Hyphens: auto) {
@@ -136,12 +136,14 @@
   -o-background-size: $Arguments;
   background-size: $Arguments;
 
-  @if $Arguments == cover {
-    -ms-behavior: url($MSBackgroundStretch);
-    *behavior: url($MSBackgroundStretch);
-  } @else if $Arguments == contain {
-    -ms-behavior: url($MSBackgroundStretch);
-    *behavior: url($MSBackgroundStretch);
+  @if $Microsoft {
+    @if $Arguments == cover {
+      -ms-behavior: url($MSBackgroundStretch);
+      *behavior: url($MSBackgroundStretch);
+    } @else if $Arguments == contain {
+      -ms-behavior: url($MSBackgroundStretch);
+      *behavior: url($MSBackgroundStretch);
+    }
   }
 }
 
@@ -178,13 +180,17 @@
   -webkit-box-shadow: $Arguments;
   -moz-box-shadow: $Arguments;
   box-shadow: $Arguments;
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 @mixin BoxShadowInset ($offset-x:3px, $offset-y:3px, $blur-radius:3px, $spread-radius:3px, $color: $BoxShadowInsetColor) {
   -webkit-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   -moz-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 
 @mixin BoxRounded ($Radius: $BoxRoundedRaduis) {
@@ -192,7 +198,9 @@
   -moz-border-radius: $Radius;
   border-radius: $Radius;
   @include BackgroundClip(padding-box);
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 @mixin BoxRadius ($TopRight: 0, $BottomRight: 0, $BottomLeft: 0, $TopLeft: 0) {
 
@@ -212,14 +220,18 @@
   border-top-left-radius: $TopLeft;
 
   @include BackgroundClip(padding-box);
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 
 @mixin BoxSizing ($Type: $BoxSizingType) {
   -webkit-box-sizing: $Type;
   -moz-box-sizing: $Type;
   box-sizing: $Type;
-  *behavior: url($MSBoxSizing);
+  @if $Microsoft {
+    *behavior: url($MSBoxSizing);
+  }
 }
 
 @mixin GradientVertical ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
@@ -229,7 +241,9 @@
   background: -moz-linear-gradient(top, $StartColor, $EndColor);
   background: -ms-linear-gradient(top, $StartColor, $EndColor);
   background: -o-linear-gradient(top, $StartColor, $EndColor);
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 @mixin GradientHorizontal ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
   background-color: $StartColor;
@@ -238,7 +252,9 @@
   background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
   background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
   background-image: -o-linear-gradient(left, $StartColor, $EndColor);
-  behavior: url($MSPIE);
+  @if $Microsoft {
+    behavior: url($MSPIE);
+  }
 }
 
 @mixin Opacity ($Opacity: $Opacity) {

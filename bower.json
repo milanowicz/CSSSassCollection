@@ -1,9 +1,0 @@
-{
-  "name": "CSSSassCollection",
-  "version": "0.0.1",
-  "ignore": [
-    ".gitignore",
-    "bower.json",
-    "README.md"
-  ]
-}

@@ -14,6 +14,9 @@ Sass Mixin Toolkit for generate CSS2/3 StyleSheet files.
 Change in what you need or not ;-)
 
     // Internet Explorer Fallback Polyfill Libraries
+    $Microsoft = true;
+    // OR deactive MS Browser Fallbacks
+    $Microsoft = false;
     $MSPIE: '/JS/PIE.min.htc';
     $MSBackgroundStretch: '/JS/backgroundsize.min.htc';
     $MSBoxSizing: '/JS/boxsizing.htc';
@@ -55,12 +58,8 @@ Change in what you need or not ;-)
     $TransitionEase: ease-out;
 
 
-# Bower
-
-Install Bower at the first time when you never used it before.
-
-    $ npm install -g bower
+# Yarn
 
 Install via Bower
 
-    $ bower install CSSSassCollection
+    $ yarn add --dev https://github.com/Milanowicz/CSSSassCollection.git

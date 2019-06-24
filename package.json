@@ -1,0 +1,14 @@
+{
+  "name": "csssasscollection",
+  "version": "0.0.2",
+  "authors": [
+    {
+      "name": "Milan Hacker",
+      "email": "amaru-jive@gmx.de",
+      "role": "Developer"
+    }
+  ],
+  "private": false,
+  "devDependencies": {},
+  "dependencies": {}
+}
