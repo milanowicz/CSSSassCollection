@@ -8,7 +8,7 @@
       "role": "Developer"
     }
   ],
-  "private": false,
+  "private": true,
   "devDependencies": {},
   "dependencies": {}
 }
