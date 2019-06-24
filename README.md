@@ -14,9 +14,9 @@ Sass Mixin Toolkit for generate CSS2/3 StyleSheet files.
 Change in what you need or not ;-)
 
     // Internet Explorer Fallback Polyfill Libraries
-    $Microsoft = true;
+    $Microsoft: true;
     // OR deactive MS Browser Fallbacks
-    $Microsoft = false;
+    $Microsoft: false;
     $MSPIE: '/JS/PIE.min.htc';
     $MSBackgroundStretch: '/JS/backgroundsize.min.htc';
     $MSBoxSizing: '/JS/boxsizing.htc';
