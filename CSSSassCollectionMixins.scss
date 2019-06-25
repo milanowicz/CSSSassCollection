@@ -25,6 +25,19 @@
   }
 }
 
+@mixin FontSize ($FontSize: $FontSize) {
+  $remValue: ($FontSize / 16);
+  $pxValue: ($FontSize);
+  font-size: #{$pxValue}px;
+  font-size: #{$remValue}rem;
+}
+
+@mixin LineHeight ($LineHeight: $LineHeight) {
+  $remValue: ($LineHeight / 16);
+  $pxValue: ($LineHeight);
+  line-height: #{$pxValue}px;
+  line-height: #{$remValue}rem;
+}
 
 // Font Style Mixins
 @mixin Text ($FontFamily,
@@ -42,20 +55,6 @@
   @include LineHeight($LineHeight);
   text-transform: $TextTransform;
   font-weight: $FontWeight;
-}
-
-@mixin FontSize ($FontSize: $FontSize) {
-  $remValue: ($FontSize / 16);
-  $pxValue: ($FontSize);
-  font-size: #{$pxValue}px;
-  font-size: #{$remValue}rem;
-}
-
-@mixin LineHeight ($LineHeight: $LineHeight) {
-  $remValue: ($LineHeight / 16);
-  $pxValue: ($LineHeight);
-  line-height: #{$pxValue}px;
-  line-height: #{$remValue}rem;
 }
 
 @mixin Hyphens ($WordBreak: break-all, $Hyphens: auto) {
@@ -99,36 +98,6 @@
   //filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", argb($RGBAColor),argb($RGBAColor)); // IE9 and down
 }
 
-@mixin BackgroundImage ($Filename, $Width: auto, $Height: auto) {
-  background-image: url($Filename);
-  //$BigImage: `#{$Filename}@replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
-  @include BackgroundSize($Width $Height);
-
-  @media #{$HighDpi} {
-    background-image: url("#{$BigImage}");
-    @include BackgroundSize($Width $Height);
-  }
-}
-
-@mixin BackgroundIcon ($Filename, $Width: auto, $Height: auto) {
-  background-image: data-uri($Filename);
-  *background-image: url($Filename);
-  //$BigImage: ~`#{$Filename}.replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
-  @inclue BackgroundSize($Width $Height);
-
-  @media #{$HighDpi} {
-    background-image: data-uri("#{$BigImage}");
-    *background-image: url("#{$BigImage}");
-    @include BackgroundSize($Width $Height);
-  }
-}
-@mixin BackgroundIconSize ($Width: auto, $Height: auto) {
-  @include BackgroundSize($Width $Height);
-  @media #{$HighDpi} {
-    @include BackgroundSize($Width $Height);
-  }
-}
-
 @mixin BackgroundSize ($Arguments) {
   -webkit-background-size: $Arguments;
   -moz-background-size: $Arguments;
@@ -162,6 +131,36 @@
 @mixin BackgroundVisibility ($Arguments) {
   -webkit-backface-visibility: $Arguments;
   backface-visibility: $Arguments;
+}
+
+@mixin BackgroundImage ($Filename, $Width: auto, $Height: auto) {
+  background-image: url($Filename);
+  //$BigImage: `#{$Filename}@replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
+  @include BackgroundSize($Width $Height);
+
+  @media #{$HighDpi} {
+    background-image: url("#{$BigImage}");
+    @include BackgroundSize($Width $Height);
+  }
+}
+
+@mixin BackgroundIcon ($Filename, $Width: auto, $Height: auto) {
+  background-image: data-uri($Filename);
+  *background-image: url($Filename);
+  //$BigImage: ~`#{$Filename}.replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
+  @inclue BackgroundSize($Width $Height);
+
+  @media #{$HighDpi} {
+    background-image: data-uri("#{$BigImage}");
+    *background-image: url("#{$BigImage}");
+    @include BackgroundSize($Width $Height);
+  }
+}
+@mixin BackgroundIconSize ($Width: auto, $Height: auto) {
+  @include BackgroundSize($Width $Height);
+  @media #{$HighDpi} {
+    @include BackgroundSize($Width $Height);
+  }
 }
 
 
@@ -358,20 +357,19 @@
   transform: $Arguments;
 }
 
-@mixin TransformOrigin ($X:center, $Y:center) {
+@mixin TransformOrigin ($X: center, $Y: center) {
   -webkit-transform-origin: $X $Y;
   -moz-transform-origin: $X $Y;
   -ms-transform-origin: $X $Y;
-  -o-transform-origin: $X $y;
-  transform-origin: $X $y;
+  -o-transform-origin: $X $Y;
+  transform-origin: $X $Y;
 }
 
-@mixin Transition ($Duration: $TransitionDuration,
-$Ease: $TransitionEase) {
-  -webkit-transition: all $Duration $Ease;
-  -moz-transition: all $Duration $Ease;
-  -o-transition: all $Duration $Ease;
-  transition: all $Duration $Ease;
+@mixin Transition ($Arguments: all $TransitionDuration $TransitionEase) {
+  -webkit-transition: $Arguments;
+  -moz-transition: $Arguments;
+  -o-transition: $Arguments;
+  transition: $Arguments;
 }
 
 @mixin TransitionDuration ($Duration: $TransitionDuration) {
