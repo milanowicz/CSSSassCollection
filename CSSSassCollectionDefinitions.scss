@@ -1,18 +1,13 @@
 // File: CSSSassCollectionDefinitions.scss
 // Author: Milanowicz
-// Date: 2019
-// Version: 0.0.2
+// Date: 2020
+// Version: 0.0.*
 
 
 //################################
 //##  Default Sass Definitions  ##
 //################################
 
-// Internet Explorer Fallback Libraries
-$Microsoft: false;
-$MSPIE: '/JS/PIE.min.htc';
-$MSBackgroundStretch: '/JS/backgroundsize.min.htc';
-$MSBoxSizing: '/JS/boxsizing.htc';
 
 // Images for High Resolution
 $HighDpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
@@ -27,7 +22,6 @@ $BackgroundColor: #cccccc;
 
 
 // Fonts Style
-
 $FontStyle: normal;
 $TextTransform: none;
 $FontWeight: normal;
@@ -37,7 +31,6 @@ $LineHeight: 16;
 
 
 // Box and etc defaults styles
-
 $BoxRoundedRaduis: 5px;
 $BoxSizingType: border-box;
 $BoxShadowInsetColor: #ccc;

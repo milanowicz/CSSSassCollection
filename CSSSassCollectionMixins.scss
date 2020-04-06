@@ -104,16 +104,6 @@
   -ms-background-size: $Arguments;
   -o-background-size: $Arguments;
   background-size: $Arguments;
-
-  @if $Microsoft {
-    @if $Arguments == cover {
-      -ms-behavior: url($MSBackgroundStretch);
-      *behavior: url($MSBackgroundStretch);
-    } @else if $Arguments == contain {
-      -ms-behavior: url($MSBackgroundStretch);
-      *behavior: url($MSBackgroundStretch);
-    }
-  }
 }
 
 @mixin BackgroundClip ($Argument: $BackgroundClipType) {
@@ -179,17 +169,11 @@
   -webkit-box-shadow: $Arguments;
   -moz-box-shadow: $Arguments;
   box-shadow: $Arguments;
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 @mixin BoxShadowInset ($offset-x:3px, $offset-y:3px, $blur-radius:3px, $spread-radius:3px, $color: $BoxShadowInsetColor) {
   -webkit-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   -moz-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 
 @mixin BoxRounded ($Radius: $BoxRoundedRaduis) {
@@ -197,9 +181,6 @@
   -moz-border-radius: $Radius;
   border-radius: $Radius;
   @include BackgroundClip(padding-box);
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 @mixin BoxRadius ($TopRight: 0, $BottomRight: 0, $BottomLeft: 0, $TopLeft: 0) {
 
@@ -219,18 +200,12 @@
   border-top-left-radius: $TopLeft;
 
   @include BackgroundClip(padding-box);
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 
 @mixin BoxSizing ($Type: $BoxSizingType) {
   -webkit-box-sizing: $Type;
   -moz-box-sizing: $Type;
   box-sizing: $Type;
-  @if $Microsoft {
-    *behavior: url($MSBoxSizing);
-  }
 }
 
 @mixin GradientVertical ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
@@ -240,9 +215,6 @@
   background: -moz-linear-gradient(top, $StartColor, $EndColor);
   background: -ms-linear-gradient(top, $StartColor, $EndColor);
   background: -o-linear-gradient(top, $StartColor, $EndColor);
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 @mixin GradientHorizontal ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
   background-color: $StartColor;
@@ -251,9 +223,6 @@
   background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
   background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
   background-image: -o-linear-gradient(left, $StartColor, $EndColor);
-  @if $Microsoft {
-    behavior: url($MSPIE);
-  }
 }
 
 @mixin Opacity ($Opacity: $Opacity) {
@@ -274,7 +243,7 @@
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: box;
+  display: flex;
 }
 
 @mixin Flexbox ($Arguments) {
@@ -405,17 +374,36 @@
 
 // HTML Forms
 
+@mixin FormInputPlaceholder() {
+  $selector: '';
+  $prefixes: (
+          moz: "::-moz",
+          webkit: "::-webkit",
+          ie: ":-ms"
+  );
+  @each $prop, $value in $prefixes {
+    @if $prop != "moz" {
+      $selector: #{$value}-input-placeholder;
+    } @else {
+      $selector: #{$value}-placeholder;
+    }
+    @if & {
+      &#{$selector} {
+        @content;
+      }
+    } @else {
+      #{$selector} {
+        @content;
+      }
+    }
+  }
+  &::placeholder {
+    @content;
+  }
+}
+
 @mixin FormPlaceholderColor ($Color: $ColorBlack) {
-  &::-webkit-input-placeholder {
-    color:    $Color;
-  }
-  &:-moz-placeholder {
-    color:    $Color;
-  }
-  &::-moz-placeholder {
-    color:    $Color;
-  }
-  &:-ms-input-placeholder {
-    color:    $Color;
+  @include FormInputPlaceholder() {
+    color: $Color;
   }
 }
