@@ -1,7 +1,6 @@
-# CSS Sass Collection
+# CSS Sass Mixin Collection
 
-
-Sass Mixin Collection
+![Test](https://github.com/Milanowicz/CSSSassCollection/workflows/Build/badge.svg?branch=dev)
 
 
 ## CSSSassCollectionMixins.scss
@@ -58,8 +57,6 @@ Change in what you need or not ;-)
     $TransitionEase: ease-out;
 
 
-# Yarn
-
-Install via Bower
+# Install by Yarn
 
     $ yarn add --dev https://github.com/Milanowicz/CSSSassCollection.git

@@ -9,6 +9,15 @@
     }
   ],
   "private": false,
-  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6",
+    "jest": "^26.4.2",
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.12",
+    "sass-true": "^6.0.0"
+  },
   "dependencies": {}
 }

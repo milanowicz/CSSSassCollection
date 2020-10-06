@@ -1,0 +1,62 @@
+@import 'sass-tests';
+
+@include describe('Fonts') {
+  @include it('check FontSize output') {
+    @include assert {
+      @include output {
+        @include FontSize(16);
+      }
+      @include expect {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @include it('check LineHeight output') {
+    @include assert {
+      @include output {
+        @include LineHeight(16);
+      }
+      @include expect {
+        line-height: 16px;
+        line-height: 1rem;
+      }
+    }
+  }
+
+  @include it('check Text output') {
+    @include assert {
+      @include output {
+        @include Text('Arial');
+      }
+      @include expect {
+        font-family: 'Arial';
+        font-size: 16px;
+        font-size: 1rem;
+        color: $ColorBlack;
+        font-style: $FontStyle;
+        line-height: 16px;
+        line-height: 1rem;
+        text-transform: $TextTransform;
+        font-weight: $FontWeight;
+      }
+    }
+  }
+
+  @include it('check Hyphens output') {
+    @include assert {
+      @include output {
+        @include Hyphens();
+      }
+      @include expect {
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+      }
+    }
+  }
+}

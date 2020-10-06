@@ -1,0 +1,116 @@
+@import 'sass-tests';
+
+@include describe('Background') {
+  @include it('check BackgroundOpacity output') {
+    @include assert {
+      $Color: $BackgroundColor;
+      $Opacity: $Opacity;
+      $RGBColor: rgb(red($Color), green($Color), blue($Color));
+      $RGBAColor: rgba(red($Color), green($Color), blue($Color), $Opacity);
+      @include output {
+        @include BackgroundOpacity($Color, $Opacity);
+      }
+      @include expect {
+        background: $RGBColor;
+        background: transparent\9;
+        background: $RGBAColor;
+      }
+    }
+  }
+
+  @include it('check BackgroundSize output') {
+    @include assert {
+      $Arguments: cover;
+      @include output {
+        @include BackgroundSize($Arguments);
+      }
+      @include expect {
+        -webkit-background-size: $Arguments;
+        -moz-background-size: $Arguments;
+        -ms-background-size: $Arguments;
+        -o-background-size: $Arguments;
+        background-size: $Arguments;
+      }
+    }
+  }
+
+  @include it('check BackgroundClip output') {
+    @include assert {
+      $Argument: $BackgroundClipType;
+      @include output {
+        @include BackgroundClip($Argument);
+      }
+      @include expect {
+        -moz-background-clip: $Argument;
+        -webkit-background-clip: $Argument;
+        background-clip: $Argument;
+      }
+    }
+  }
+
+  @include it('check BackgroundPosition output') {
+    @include assert {
+      $X: 50%;
+      $Y: 50%;
+      @include output {
+        @include BackgroundPosition($X, $Y);
+      }
+      @include expect {
+        background-position-x: $X;
+        background-position-y: $Y;
+        background-position: $X $Y;
+      }
+    }
+  }
+
+  @include it('check BackgroundVisibility output') {
+    @include assert {
+      $Arguments: visible;
+      @include output {
+        @include BackgroundVisibility($Arguments);
+      }
+      @include expect {
+        -webkit-backface-visibility: $Arguments;
+        backface-visibility: $Arguments;
+      }
+    }
+  }
+
+  @include it('check GradientVertical output') {
+    @include assert {
+      $StartColor: $GradientStartColor;
+      $EndColor: $GradientEndColor;
+      @include output {
+        @include GradientVertical($StartColor, $EndColor);
+      }
+      @include expect {
+        background-color: $StartColor;
+        background: -webkit-gradient(linear, left top, left bottom, from($StartColor), to($EndColor));
+        background: -webkit-linear-gradient(top, $StartColor, $EndColor);
+        background: -moz-linear-gradient(top, $StartColor, $EndColor);
+        background: -ms-linear-gradient(top, $StartColor, $EndColor);
+        background: -o-linear-gradient(top, $StartColor, $EndColor);
+      }
+    }
+  }
+
+  @include it('check GradientVertical output') {
+    @include assert {
+      $StartColor: $GradientStartColor;
+      $EndColor: $GradientEndColor;
+      @include output {
+        @include GradientHorizontal($StartColor, $EndColor);
+      }
+      @include expect {
+        background-color: $StartColor;
+        background-image: -webkit-gradient(linear, left top, right top, from($StartColor), to($EndColor));
+        background-image: -webkit-linear-gradient(left, $StartColor, $EndColor);
+        background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
+        background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
+        background-image: -o-linear-gradient(left, $StartColor, $EndColor);
+      }
+    }
+  }
+
+
+}

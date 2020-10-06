@@ -1,0 +1,153 @@
+@import 'sass-tests';
+
+@include describe('Helper') {
+  @include it('check BoxSize output') {
+    @include assert {
+      @include output {
+        @include BoxSize(100%, auto);
+        @include BoxSize(100%);
+      }
+      @include expect {
+        width: 100%;
+        height: auto;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  @include it('check BoxShadow output') {
+    @include assert {
+      $Arguments: 1px solid;
+      @include output {
+        @include BoxShadow($Arguments);
+      }
+      @include expect {
+        -webkit-box-shadow: $Arguments;
+        -moz-box-shadow: $Arguments;
+        box-shadow: $Arguments;
+      }
+    }
+  }
+
+  @include it('check BoxShadowInset output') {
+    @include assert {
+      $offset-x: 3px;
+      $offset-y: 3px;
+      $blur-radius: 3px;
+      $spread-radius: 3px;
+      $color: $BoxShadowInsetColor;
+      @include output {
+        @include BoxShadowInset($offset-x, $offset-y, $blur-radius, $spread-radius, $color);
+      }
+      @include expect {
+        -webkit-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+        -moz-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+        box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
+      }
+    }
+  }
+
+  @include it('check BoxRounded output') {
+    @include assert {
+      $Radius: $BoxRoundedRaduis;
+      $Argument: $BackgroundClipType;
+      @include output {
+        @include BoxRounded($Radius);
+      }
+      @include expect {
+        -webkit-border-radius: $Radius;
+        -moz-border-radius: $Radius;
+        border-radius: $Radius;
+        -moz-background-clip: $Argument;
+        -webkit-background-clip: $Argument;
+        background-clip: $Argument;
+      }
+    }
+  }
+
+  @include it('check BoxRadius output') {
+    @include assert {
+      $TopRight: 10px;
+      $BottomRight: 10px;
+      $BottomLeft: 10px;
+      $TopLeft: 10px;
+      $Argument: $BackgroundClipType;
+      @include output {
+        @include BoxRadius($TopRight, $BottomRight, $BottomLeft, $TopLeft);
+      }
+      @include expect {
+        -webkit-border-top-right-radius: $TopRight;
+        -webkit-border-bottom-right-radius: $BottomRight;
+        -webkit-border-bottom-left-radius: $BottomLeft;
+        -webkit-border-top-left-radius: $TopLeft;
+
+        -moz-border-radius-topright: $TopRight;
+        -moz-border-radius-bottomright: $BottomRight;
+        -moz-border-radius-bottomleft: $BottomLeft;
+        -moz-border-radius-topleft: $TopLeft;
+
+        border-top-right-radius: $TopRight;
+        border-bottom-right-radius: $BottomRight;
+        border-bottom-left-radius: $BottomLeft;
+        border-top-left-radius: $TopLeft;
+
+        -moz-background-clip: $Argument;
+        -webkit-background-clip: $Argument;
+        background-clip: $Argument;
+      }
+    }
+  }
+
+  @include it('check BoxSizing output') {
+    @include assert {
+      $Type: $BoxSizingType;
+      @include output {
+        @include BoxSizing($Type);
+      }
+      @include expect {
+        -webkit-box-sizing: $Type;
+        -moz-box-sizing: $Type;
+        box-sizing: $Type;
+      }
+    }
+  }
+
+  @include it('check OutlineBorder output') {
+    @include assert {
+      @include output {
+        @include OutlineBorder();
+      }
+      @include expect {
+        border: 0 none;
+        outline: 0 none;
+      }
+    }
+  }
+
+  @include it('check MarginPadding output') {
+    @include assert {
+      @include output {
+        @include MarginPadding(10px 0 0 0, 0 0 10px 0);
+      }
+      @include expect {
+        margin: 10px 0 0 0;
+        padding: 0 0 10px 0;
+      }
+    }
+  }
+  @include it('check Opacity output') {
+    @include assert {
+      $Opacity: $Opacity;
+      @include output {
+        @include Opacity($Opacity);
+      }
+      @include expect {
+        -moz-opacity: $Opacity;
+        -khtml-opacity: $Opacity;
+        -webkit-opacity: $Opacity;
+        opacity: $Opacity;
+      }
+    }
+  }
+}
