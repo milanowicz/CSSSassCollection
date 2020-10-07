@@ -1,0 +1,97 @@
+@import 'sass-tests';
+
+@include describe('Animation') {
+  @include it('check Animation output') {
+    @include assert {
+      $Arguments: ani 1s infinite;
+      @include output {
+        @include Animation($Arguments);
+      }
+      @include expect {
+        -webkit-animation: $Arguments;
+        -moz-animation: $Arguments;
+        -o-animation:$Arguments;
+        animation: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationDelay output') {
+    @include assert {
+      $Arguments: 1s;
+      @include output {
+        @include AnimationDelay($Arguments);
+      }
+      @include expect {
+        -webkit-animation-delay: $Arguments;
+        animation-delay: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationDirection output') {
+    @include assert {
+      $Arguments: normal;
+      @include output {
+        @include AnimationDirection($Arguments);
+      }
+      @include expect {
+        -webkit-animation-direction: $Arguments;
+        -moz-animation-direction: $Arguments;
+        animation-direction: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationDuration output') {
+    @include assert {
+      $Arguments: 1s;
+      @include output {
+        @include AnimationDuration($Arguments);
+      }
+      @include expect {
+        -webkit-animation-duration: $Arguments;
+        animation-duration: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationFillMode output') {
+    @include assert {
+      $Arguments: forwards;
+      @include output {
+        @include AnimationFillMode($Arguments);
+      }
+      @include expect {
+        -webkit-animation-fill-mode: $Arguments;
+        animation-fill-mode: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationIterationCount output') {
+    @include assert {
+      $Arguments: 2;
+      @include output {
+        @include AnimationIterationCount($Arguments);
+      }
+      @include expect {
+        -webkit-animation-iteration-count: $Arguments;
+        animation-iteration-count: $Arguments;
+      }
+    }
+  }
+
+  @include it('check AnimationPlayState output') {
+    @include assert {
+      $Arguments: running;
+      @include output {
+        @include AnimationPlayState($Arguments);
+      }
+      @include expect {
+        -webkit-animation-play-state: $Arguments;
+        animation-play-state: $Arguments;
+      }
+    }
+  }
+}

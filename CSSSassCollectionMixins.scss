@@ -238,7 +238,7 @@
 
 // HTML5 Flexbox
 
-@mixin Flexbox () {
+@mixin FlexboxDisplay () {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -247,6 +247,7 @@
 }
 
 @mixin Flexbox ($Arguments) {
+  @include FlexboxDisplay();
   -webkit-box-flex: $Arguments;
   -moz-box-flex:  $Arguments;
   -webkit-flex:  $Arguments;

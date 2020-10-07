@@ -1,0 +1,40 @@
+@import 'sass-tests';
+
+@include describe('Flexbox') {
+  @include it('check Flexbox output') {
+    @include assert {
+      $Arguments: flex-grow;
+      @include output {
+        @include Flexbox($Arguments);
+      }
+      @include expect {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-flex: $Arguments;
+        -moz-box-flex:  $Arguments;
+        -webkit-flex:  $Arguments;
+        -ms-flex:  $Arguments;
+        flex:  $Arguments;
+      }
+    }
+  }
+
+  @include it('check FlexboxOrder output') {
+    @include assert {
+      $Arguments: 1;
+      @include output {
+        @include FlexboxOrder($Arguments);
+      }
+      @include expect {
+        -webkit-box-ordinal-group: $Arguments;
+        -moz-box-ordinal-group: $Arguments;
+        -ms-flex-order: $Arguments;
+        -webkit-order: $Arguments;
+        order: $Arguments;
+      }
+    }
+  }
+}

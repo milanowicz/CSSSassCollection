@@ -1,0 +1,33 @@
+@import 'sass-tests';
+
+@include describe('Transition') {
+  @include it('check Transition output') {
+    @include assert {
+      $Arguments: all $TransitionDuration $TransitionEase;
+      @include output {
+        @include Transition($Arguments);
+      }
+      @include expect {
+        -webkit-transition: $Arguments;
+        -moz-transition: $Arguments;
+        -o-transition: $Arguments;
+        transition: $Arguments;
+      }
+    }
+  }
+
+  @include it('check TransitionDuration output') {
+    @include assert {
+      $Duration: $TransitionDuration;
+      @include output {
+        @include TransitionDuration($Duration);
+      }
+      @include expect {
+        -moz-transition-duration: $Duration;
+        -webkit-transition-duration: $Duration;
+        -o-transition-duration: $Duration;
+        transition-duration: $Duration;
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@import 'sass-tests';
+
+@include describe('Transform') {
+  @include it('check Transform output') {
+    @include assert {
+      $Arguments: rotate(20deg);
+      @include output {
+        @include Transform($Arguments);
+      }
+      @include expect {
+        -webkit-transform: $Arguments;
+        -moz-transform: $Arguments;
+        -ms-transform: $Arguments;
+        -o-transform: $Arguments;
+        transform: $Arguments;
+      }
+    }
+  }
+
+  @include it('check TransformOrigin output') {
+    @include assert {
+      $X: center;
+      $Y: center;
+      @include output {
+        @include TransformOrigin($X, $Y);
+      }
+      @include expect {
+        -webkit-transform-origin: $X $Y;
+        -moz-transform-origin: $X $Y;
+        -ms-transform-origin: $X $Y;
+        -o-transform-origin: $X $Y;
+        transform-origin: $X $Y;
+      }
+    }
+  }
+
+  @include it('check Perspective output') {
+    @include assert {
+      $Value: 1000;
+      @include output {
+        @include Perspective($Value);
+      }
+      @include expect {
+        -webkit-perspective: $Value;
+        -moz-perspective: $Value;
+        -ms-perspective: $Value;
+        perspective: $Value;
+      }
+    }
+  }
+
+  @include it('check Rotation output') {
+    @include assert {
+      $Deg: $RotationDeg;
+      @include output {
+        @include Rotation($Deg);
+      }
+      @include expect {
+        -webkit-transform: rotate($Deg);
+        -moz-transform: rotate($Deg);
+        -ms-transform: rotate($Deg);
+        -o-transform: rotate($Deg);
+        transform: rotate($Deg);
+      }
+    }
+  }
+
+  @include it('check Scale output') {
+    @include assert {
+      $Ratio: $ScaleRatio;
+      @include output {
+        @include Scale($Ratio);
+      }
+      @include expect {
+        -webkit-transform: scale($Ratio);
+        -moz-transform: scale($Ratio);
+        -ms-transform: scale($Ratio);
+        -o-transform: scale($Ratio);
+        transform: scale($Ratio);
+      }
+    }
+  }
+
+  @include it('check Skew output') {
+    @include assert {
+      $RotationDeg: 15deg;
+      $RotationDeg2: 45deg;
+      @include output {
+        @include Skew($RotationDeg, $RotationDeg2);
+      }
+      @include expect {
+        -webkit-transform: skew($RotationDeg, $RotationDeg2);
+        -moz-transform: skew($RotationDeg, $RotationDeg2);
+        -ms-transform: skew($RotationDeg, $RotationDeg2);
+        -o-transform: skew($RotationDeg, $RotationDeg2);
+        transform: skew($RotationDeg, $RotationDeg2);
+      }
+    }
+  }
+
+  @include it('check Translate output') {
+    @include assert {
+      $X: 20;
+      $Y: 10;
+      @include output {
+        @include Translate($X, $Y);
+      }
+      @include expect {
+        -webkit-transform: translate($X, $Y);
+        -moz-transform: translate($X, $Y);
+        -ms-transform: translate($X, $Y);
+        -o-transform: translate($X, $Y);
+        transform: translate($X, $Y);
+      }
+    }
+  }
+
+  @include it('check Translate3D output') {
+    @include assert {
+      $X: 20;
+      $Y: 10;
+      $Z: 30;
+      @include output {
+        @include Translate3D($X, $Y, $Z);
+      }
+      @include expect {
+        -webkit-transform: translate($X, $Y, $Z);
+        -moz-transform: translate($X, $Y, $Z);
+        -ms-transform: translate($X, $Y, $Z);
+        -o-transform: translate($X, $Y, $Z);
+        transform: translate($X, $Y, $Z);
+      }
+    }
+  }
+}
