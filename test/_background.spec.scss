@@ -76,6 +76,22 @@
     }
   }
 
+  @include it('check LinearGradient output') {
+    @include assert {
+      $Arguments: 15deg, transparent 12%, #000000 88%, transparent 99%;
+      @include output {
+        @include LinearGradient($Arguments);
+      }
+      @include expect {
+        background: -webkit-gradient($Arguments);
+        background: -webkit-linear-gradient($Arguments);
+        background: -moz-linear-gradient($Arguments);
+        background: -ms-linear-gradient($Arguments);
+        background: -o-linear-gradient($Arguments);
+      }
+    }
+  }
+
   @include it('check GradientVertical output') {
     @include assert {
       $StartColor: $GradientStartColor;
