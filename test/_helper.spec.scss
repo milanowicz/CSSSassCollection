@@ -16,6 +16,21 @@
     }
   }
 
+  @include it('check BoxSquare output') {
+    @include assert {
+      @include output {
+        @include BoxSquare(100%);
+        @include BoxSquare(95px);
+      }
+      @include expect {
+        width: 100%;
+        height: 100%;
+        width: 95px;
+        height: 95px;
+      }
+    }
+  }
+
   @include it('check Height output') {
     @include assert {
       @include output {
