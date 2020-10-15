@@ -165,6 +165,14 @@
   }
 }
 
+@mixin Height ($Height) {
+  height: $Height !important;
+}
+
+@mixin Width ($Width) {
+  width: $Width !important;
+}
+
 @mixin BoxShadow ($Arguments) {
   -webkit-box-shadow: $Arguments;
   -moz-box-shadow: $Arguments;

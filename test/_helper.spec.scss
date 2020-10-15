@@ -16,6 +16,32 @@
     }
   }
 
+  @include it('check Height output') {
+    @include assert {
+      @include output {
+        @include Height(95%);
+        @include Height(95px);
+      }
+      @include expect {
+        height: 95% !important;
+        height: 95px !important;
+      }
+    }
+  }
+
+  @include it('check Width output') {
+    @include assert {
+      @include output {
+        @include Width(95%);
+        @include Width(95px);
+      }
+      @include expect {
+        width: 95% !important;
+        width: 95px !important;
+      }
+    }
+  }
+
   @include it('check BoxShadow output') {
     @include assert {
       $Arguments: 1px solid;
