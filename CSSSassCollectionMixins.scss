@@ -25,18 +25,29 @@
   }
 }
 
-@mixin FontSize ($FontSize: $FontSize) {
+@mixin FontSize ($FontSize: $FontSize, $Important: false) {
   $remValue: ($FontSize / 16);
   $pxValue: ($FontSize);
-  font-size: #{$pxValue}px;
-  font-size: #{$remValue}rem;
+  @if $Important {
+    font-size: #{$pxValue}px !important;
+    font-size: #{$remValue}rem !important;
+  } @else {
+    font-size: #{$pxValue}px;
+    font-size: #{$remValue}rem;
+  }
 }
 
-@mixin LineHeight ($LineHeight: $LineHeight) {
+@mixin LineHeight ($LineHeight: $LineHeight, $Important: false) {
   $remValue: ($LineHeight / 16);
   $pxValue: ($LineHeight);
-  line-height: #{$pxValue}px;
-  line-height: #{$remValue}rem;
+
+  @if $Important {
+    line-height: #{$pxValue}px !important;
+    line-height: #{$remValue}rem !important;
+  } @else {
+    line-height: #{$pxValue}px;
+    line-height: #{$remValue}rem;
+  }
 }
 
 // Font Style Mixins
@@ -77,9 +88,14 @@
   outline: 0 none;
 }
 
-@mixin MarginPadding ($Margin: 0, $Padding: 0) {
-  margin: $Margin;
-  padding: $Padding;
+@mixin MarginPadding ($Margin: 0, $Padding: 0, $Important: false) {
+  @if $Important {
+    margin: $Margin !important;
+    padding: $Padding !important;
+  } @else {
+    margin: $Margin;
+    padding: $Padding;
+  }
 }
 
 
@@ -156,18 +172,32 @@
 
 // HTML Box Styles
 
-@mixin BoxSize ($Width, $Height: 0) {
-  width: $Width;
-  @if $Height != 0 {
-    height: $Height;
+@mixin BoxSize ($Width, $Height: 0, $Important: false) {
+  @if $Important {
+    width: $Width !important;
+    @if $Height != 0 {
+      height: $Height !important;
+    } @else {
+      height: $Width !important;
+    }
   } @else {
-    height: $Width;
+    width: $Width;
+    @if $Height != 0 {
+      height: $Height;
+    } @else {
+      height: $Width;
+    }
   }
 }
 
-@mixin BoxSquare ($Size) {
-  width: $Size;
-  height: $Size;
+@mixin BoxSquare ($Size, $Important: false) {
+  @if $Important {
+    width: $Size !important;
+    height: $Size !important;
+  } @else {
+    width: $Size;
+    height: $Size;
+  }
 }
 
 @mixin Height ($Height) {
@@ -215,10 +245,16 @@
   @include BackgroundClip(padding-box);
 }
 
-@mixin BoxSizing ($Type: $BoxSizingType) {
-  -webkit-box-sizing: $Type;
-  -moz-box-sizing: $Type;
-  box-sizing: $Type;
+@mixin BoxSizing ($Type: $BoxSizingType, $Important: false) {
+  @if $Important {
+    -webkit-box-sizing: $Type !important;
+    -moz-box-sizing: $Type !important;
+    box-sizing: $Type !important;
+  } @else {
+    -webkit-box-sizing: $Type;
+    -moz-box-sizing: $Type;
+    box-sizing: $Type;
+  }
 }
 
 @mixin LinearGradient ($Arguments) {
