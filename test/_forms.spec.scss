@@ -1,0 +1,64 @@
+@import 'sass-tests';
+
+@include describe('Forms') {
+  @include it('check FormInputPlaceholder output') {
+    @include assert {
+      @include output {
+        @include FormInputPlaceholder() {
+          font-family: Arial;
+        }
+      }
+      @include expect {
+        &::-moz-placeholder {
+          font-family: Arial;
+        }
+        &::-webkit-input-placeholder {
+          font-family: Arial;
+        }
+        &:-ms-input-placeholder {
+          font-family: Arial;
+        }
+        &::placeholder {
+          font-family: Arial;
+        }
+      }
+    }
+  }
+
+  @include it('check FormPlaceholderColor output') {
+    @include assert {
+      @include output {
+        @include FormPlaceholderColor();
+
+        @include FormPlaceholderColor(#FFFFFF);
+      }
+      @include expect {
+        &::-moz-placeholder {
+          color: #000000;
+        }
+        &::-webkit-input-placeholder {
+          color: #000000;
+        }
+        &:-ms-input-placeholder {
+          color: #000000;
+        }
+        &::placeholder {
+          color: #000000;
+        }
+
+        &::-moz-placeholder {
+          color: #FFFFFF;
+        }
+        &::-webkit-input-placeholder {
+          color: #FFFFFF;
+        }
+        &:-ms-input-placeholder {
+          color: #FFFFFF;
+        }
+        &::placeholder {
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}

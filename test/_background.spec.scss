@@ -76,6 +76,74 @@
     }
   }
 
+  @include it('check BackgroundImage output') {
+    @include assert {
+      @include output {
+        @include BackgroundImage('/test.img', '/testBig.img', 50px, 100px);
+        @include BackgroundImage('/test.img');
+      }
+      @include expect {
+        background-image: url('/test.img');
+        -webkit-background-size: 50px 100px;
+        -moz-background-size: 50px 100px;
+        -ms-background-size: 50px 100px;
+        -o-background-size: 50px 100px;
+        background-size: 50px 100px;
+
+        @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+          background-image: url('/testBig.img');
+          -webkit-background-size: 50px 100px;
+          -moz-background-size: 50px 100px;
+          -ms-background-size: 50px 100px;
+          -o-background-size: 50px 100px;
+          background-size: 50px 100px;
+        }
+        background-image: url('/test.img');
+        -webkit-background-size: auto auto;
+        -moz-background-size: auto auto;
+        -ms-background-size: auto auto;
+        -o-background-size: auto auto;
+        background-size: auto auto;
+      }
+    }
+  }
+
+
+  @include it('check BackgroundIconSize output') {
+    @include assert {
+      @include output {
+        @include BackgroundIconSize();
+        @include BackgroundIconSize(50px, 100px);
+      }
+      @include expect {
+        -webkit-background-size: auto auto;
+        -moz-background-size: auto auto;
+        -ms-background-size: auto auto;
+        -o-background-size: auto auto;
+        background-size: auto auto;
+        @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+          -webkit-background-size: auto auto;
+          -moz-background-size: auto auto;
+          -ms-background-size: auto auto;
+          -o-background-size: auto auto;
+          background-size: auto auto;
+        }
+        -webkit-background-size: 50px 100px;
+        -moz-background-size: 50px 100px;
+        -ms-background-size: 50px 100px;
+        -o-background-size: 50px 100px;
+        background-size: 50px 100px;
+        @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx) {
+          -webkit-background-size: 50px 100px;
+          -moz-background-size: 50px 100px;
+          -ms-background-size: 50px 100px;
+          -o-background-size: 50px 100px;
+          background-size: 50px 100px;
+        }
+      }
+    }
+  }
+
   @include it('check LinearGradient output') {
     @include assert {
       $Arguments: 15deg, transparent 12%, #000000 88%, transparent 99%;
@@ -110,7 +178,7 @@
     }
   }
 
-  @include it('check GradientVertical output') {
+  @include it('check GradientHorizontal output') {
     @include assert {
       $StartColor: $GradientStartColor;
       $EndColor: $GradientEndColor;

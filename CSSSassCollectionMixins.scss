@@ -1,7 +1,5 @@
 // File: CSSSassCollectionMixins.scss
 // Author: Milanowicz
-// Date: 2020
-// Version: 0.0.*
 // Description: Sass Mixin Collection
 
 
@@ -12,7 +10,6 @@
 @mixin FontFace ($FontName, $FontFile,
                   $FontWeight: $FontWeight,
                   $FontStyle: $FontStyle) {
-
   @font-face {
     font-family: "#{$FontName}";
     src: url("#{$FontFile}-webfont.eot");
@@ -139,26 +136,26 @@
   backface-visibility: $Arguments;
 }
 
-@mixin BackgroundImage ($Filename, $Width: auto, $Height: auto) {
+@mixin BackgroundImage ($Filename, $FilenameBig: '', $Width: auto, $Height: auto) {
   background-image: url($Filename);
-  //$BigImage: `#{$Filename}@replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
   @include BackgroundSize($Width $Height);
 
-  @media #{$HighDpi} {
-    background-image: url("#{$BigImage}");
-    @include BackgroundSize($Width $Height);
+  @if ($FilenameBig != '') {
+    @media #{$HighDpi} {
+      background-image: url($FilenameBig);
+      @include BackgroundSize($Width $Height);
+    }
   }
 }
 
-@mixin BackgroundIcon ($Filename, $Width: auto, $Height: auto) {
+@mixin BackgroundIcon ($Filename, $FilenameBig: '', $Width: auto, $Height: auto) {
   background-image: data-uri($Filename);
   *background-image: url($Filename);
-  //$BigImage: ~`#{$Filename}.replace(/\@\w+$/, function(match) { return #{$BigPictureExtension} + match; })`;
   @inclue BackgroundSize($Width $Height);
 
   @media #{$HighDpi} {
-    background-image: data-uri("#{$BigImage}");
-    *background-image: url("#{$BigImage}");
+    background-image: data-uri($FilenameBig);
+    *background-image: url($FilenameBig);
     @include BackgroundSize($Width $Height);
   }
 }

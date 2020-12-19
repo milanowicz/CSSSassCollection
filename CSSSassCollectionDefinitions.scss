@@ -1,18 +1,13 @@
 // File: CSSSassCollectionDefinitions.scss
 // Author: Milanowicz
-// Date: 2020
-// Version: 0.0.*
 
 
 //################################
 //##  Default Sass Definitions  ##
 //################################
 
-
 // Images for High Resolution
 $HighDpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
-$BigPictureExtension: "_big";
-
 
 // Colors
 $ColorBlack: #000000;
@@ -42,3 +37,4 @@ $RotationDeg: 5deg;
 $ScaleRatio: 1.5;
 $TransitionDuration: 0.2s;
 $TransitionEase: ease-out;
+$Microsoft: false;

@@ -22,6 +22,21 @@
     }
   }
 
+  @include it('check FlexboxDisplay output') {
+    @include assert {
+      @include output {
+        @include FlexboxDisplay();
+      }
+      @include expect {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+      }
+    }
+  }
+
   @include it('check FlexboxOrder output') {
     @include assert {
       $Arguments: 1;

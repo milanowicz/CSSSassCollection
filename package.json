@@ -1,6 +1,17 @@
 {
   "name": "csssasscollection",
-  "version": "0.0.2",
+  "description": "A CSS 2 and 3 Mixin Collection for Sass.",
+  "keywords": [
+    "Sass",
+    "Sass Mixins Collection",
+    "CSS Animation",
+    "CSS Background",
+    "CSS Fonts",
+    "CSS Forms",
+    "CSS Transform",
+    "CSS Transistion"
+  ],
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Milanowicz",
@@ -8,6 +19,10 @@
       "role": "Developer"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Milanowicz/CSSSassCollection.git"
+  },
   "private": false,
   "scripts": {
     "test": "jest"

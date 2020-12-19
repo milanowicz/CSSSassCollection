@@ -8,6 +8,21 @@
 ![](https://img.shields.io/github/languages/code-size/milanowicz/CSSSassCollection)
 
 
+## Usage
+
+Install it by Yarn or NPM
+
+    $ npm install csssasscollection
+
+    $ yarn add csssasscollection
+
+
+Sample for SASS:
+
+    @import '~csssasscollection/CSSSassCollectionDefinitions';
+    @import '~csssasscollection/CSSSassCollectionMixins';
+
+
 ## CSSSassCollectionMixins.scss
 
 Sass Mixin Toolkit for generate CSS2/3 StyleSheet files.
@@ -27,8 +42,6 @@ Change in what you need or not ;-)
 
     // Images for High Resolution
     $HighDpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
-    $BigPictureExtension: "_big";
-
 
     // Colors
     $ColorBlack: #000000;
@@ -36,9 +49,7 @@ Change in what you need or not ;-)
     $ColorLink: blue;
     $BackgroundColor: #cccccc;
 
-
     // Fonts Style
-
     $FontStyle: normal;
     $TextTransform: none;
     $FontWeight: normal;
@@ -46,9 +57,7 @@ Change in what you need or not ;-)
     $FontSize: 16;
     $LineHeight: 16;
 
-
     // Box and etc defaults styles
-
     $BoxRoundedRaduis: 5px;
     $BoxSizingType: border-box;
     $BoxShadowInsetColor: #ccc;
@@ -61,7 +70,3 @@ Change in what you need or not ;-)
     $TransitionDuration: 0.2s;
     $TransitionEase: ease-out;
 
-
-# Install by Yarn
-
-    $ yarn add --dev https://github.com/Milanowicz/CSSSassCollection.git
