@@ -7,12 +7,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.x
+    - name: "Checkout"
+      uses: actions/checkout@v1
+
+    - name: "Use Node.js"
       uses: actions/setup-node@v1
       with:
-        node-version: "12.x"
-    - run: yarn install
-    - run: npm run test
+        node-version: "14.x"
+
+    - name: "Install"
+      run: yarn install
+    - name: "Run Jest tests"
+      run: npm run test
+
+    - name: "Send coverage to codecov.io"
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
     env:
       CI: true
