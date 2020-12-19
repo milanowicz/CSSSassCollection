@@ -1,6 +1,11 @@
 # CSS Sass Mixin Collection
 
 ![Test](https://github.com/Milanowicz/CSSSassCollection/workflows/Build/badge.svg?branch=dev)
+![](https://img.shields.io/github/v/tag/Milanowicz/CSSSassCollection)
+![](https://img.shields.io/npm/v/csssasscollection)
+
+![](https://img.shields.io/github/repo-size/milanowicz/CSSSassCollection)
+![](https://img.shields.io/github/languages/code-size/milanowicz/CSSSassCollection)
 
 
 ## CSSSassCollectionMixins.scss
