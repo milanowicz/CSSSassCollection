@@ -1,7 +1,7 @@
 // File: CSSSassCollectionMixins.scss
 // Author: Milanowicz
 // Description: Sass Mixin Collection
-
+@use "sass:math";
 
 //########################################################
 //##               Sass Mixin Toolkit File              ##
@@ -23,7 +23,7 @@
 }
 
 @mixin FontSize ($FontSize: $FontSize, $Important: false) {
-  $remValue: ($FontSize / 16);
+  $remValue: math.div($FontSize, 16);
   $pxValue: ($FontSize);
   @if $Important {
     font-size: #{$pxValue}px !important;
@@ -35,7 +35,7 @@
 }
 
 @mixin LineHeight ($LineHeight: $LineHeight, $Important: false) {
-  $remValue: ($LineHeight / 16);
+  $remValue: math.div($LineHeight, 16);
   $pxValue: ($LineHeight);
 
   @if $Important {

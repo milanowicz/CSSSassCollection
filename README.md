@@ -70,3 +70,11 @@ Change in what you need or not ;-)
     $TransitionDuration: 0.2s;
     $TransitionEase: ease-out;
 
+
+## Developing
+
+Run test for Sass
+
+    $ npm run test
+
+    $ jest
