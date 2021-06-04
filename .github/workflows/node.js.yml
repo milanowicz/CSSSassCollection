@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version:
+          - "12.x"
           - "14.x"
           - "16.x"
 
@@ -24,6 +25,8 @@ jobs:
 
     - name: "Install"
       run: yarn install
+    - name: "Check for unused variables"
+      run: npm run sass-sniff
     - name: "Run Jest tests"
       run: npm run test
 
