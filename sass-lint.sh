@@ -7,19 +7,12 @@ VARIABLES=$(find "./" -type f -name "CSS*.scss" -exec grep -o "\$[$VAR_NAME_CHAR
 HEADLINE=0
 for VAR in $VARIABLES
 do
-  SHOW=1
-  if [[ $VAR == *"$color-jtl"* ]]; then
-    SHOW=0
+  if [ $HEADLINE -eq 0 ]; then
+    HEADLINE=1
+    echo "Found unused variables in Sass"
+    echo ""
   fi
-
-  if [ $SHOW -eq 1 ]; then
-    if [ $HEADLINE -eq 0 ]; then
-      HEADLINE=1
-      echo "Found unused variables in Sass"
-      echo ""
-    fi
-    find "./" -type f -name "*.scss" -exec grep -o "$VAR" -H -n {} ';'
-  fi
+  find "./" -type f -name "*.scss" -exec grep -o "$VAR" -H -n {} ';'
 done
 
 if [ $HEADLINE -eq 0 ]; then
