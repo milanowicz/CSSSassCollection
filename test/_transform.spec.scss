@@ -19,17 +19,17 @@
 
   @include it('check TransformOrigin output') {
     @include assert {
-      $X: center;
-      $Y: center;
+      $x: center;
+      $y: center;
       @include output {
-        @include TransformOrigin($X, $Y);
+        @include TransformOrigin($x, $y);
       }
       @include expect {
-        -webkit-transform-origin: $X $Y;
-        -moz-transform-origin: $X $Y;
-        -ms-transform-origin: $X $Y;
-        -o-transform-origin: $X $Y;
-        transform-origin: $X $Y;
+        -webkit-transform-origin: $x $y;
+        -moz-transform-origin: $x $y;
+        -ms-transform-origin: $x $y;
+        -o-transform-origin: $x $y;
+        transform-origin: $x $y;
       }
     }
   }
@@ -100,35 +100,35 @@
 
   @include it('check Translate output') {
     @include assert {
-      $X: 20;
-      $Y: 10;
+      $x: 20;
+      $y: 10;
       @include output {
-        @include Translate($X, $Y);
+        @include Translate($x, $y);
       }
       @include expect {
-        -webkit-transform: translate($X, $Y);
-        -moz-transform: translate($X, $Y);
-        -ms-transform: translate($X, $Y);
-        -o-transform: translate($X, $Y);
-        transform: translate($X, $Y);
+        -webkit-transform: translate($x, $y);
+        -moz-transform: translate($x, $y);
+        -ms-transform: translate($x, $y);
+        -o-transform: translate($x, $y);
+        transform: translate($x, $y);
       }
     }
   }
 
   @include it('check Translate3D output') {
     @include assert {
-      $X: 20;
-      $Y: 10;
+      $x: 20;
+      $y: 10;
       $Z: 30;
       @include output {
-        @include Translate3D($X, $Y, $Z);
+        @include Translate3D($x, $y, $Z);
       }
       @include expect {
-        -webkit-transform: translate($X, $Y, $Z);
-        -moz-transform: translate($X, $Y, $Z);
-        -ms-transform: translate($X, $Y, $Z);
-        -o-transform: translate($X, $Y, $Z);
-        transform: translate($X, $Y, $Z);
+        -webkit-transform: translate($x, $y, $Z);
+        -moz-transform: translate($x, $y, $Z);
+        -ms-transform: translate($x, $y, $Z);
+        -o-transform: translate($x, $y, $Z);
+        transform: translate($x, $y, $Z);
       }
     }
   }

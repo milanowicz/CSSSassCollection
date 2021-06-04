@@ -7,16 +7,16 @@
 //##               Sass Mixin Toolkit File              ##
 //########################################################
 
-@mixin FontFace ($FontName, $FontFile,
+@mixin FontFace ($font-name, $font-file,
                   $font-weight: $font-weight,
                   $font-style: $font-style) {
   @font-face {
-    font-family: "#{$FontName}";
-    src: url("#{$FontFile}-webfont.eot");
-    src: url("#{$FontFile}-webfont.eot?#iefix") format("embedded-opentype"),
-    url("#{$FontFile}-webfont.woff") format("woff"),
-    url("#{$FontFile}-webfont@ttf") format("truetype"),
-    url("#{$FontFile}-webfont.svg##{$FontName}") format("svg");
+    font-family: "#{$font-name}";
+    src: url("#{$font-file}-webfont.eot");
+    src: url("#{$font-file}-webfont.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-file}-webfont.woff") format("woff"),
+    url("#{$font-file}-webfont@ttf") format("truetype"),
+    url("#{$font-file}-webfont.svg##{$font-name}") format("svg");
     font-weight: $font-weight;
     font-style: $font-style;
   }
@@ -125,10 +125,10 @@
   background-clip: $argument;
 }
 
-@mixin BackgroundPosition ($X: 50%, $Y: 50%) {
-  background-position-x: $X;
-  background-position-y: $Y;
-  background-position: $X $Y;
+@mixin BackgroundPosition ($x: 50%, $y: 50%) {
+  background-position-x: $x;
+  background-position-y: $y;
+  background-position: $x $y;
 }
 
 @mixin BackgroundVisibility ($arguments) {
@@ -136,26 +136,26 @@
   backface-visibility: $arguments;
 }
 
-@mixin BackgroundImage ($filename, $filenameBig: '', $width: auto, $height: auto) {
+@mixin BackgroundImage ($filename, $filename-big: '', $width: auto, $height: auto) {
   background-image: url($filename);
   @include BackgroundSize($width $height);
 
-  @if ($filenameBig != '') {
+  @if ($filename-big != '') {
     @media #{$high-dpi} {
-      background-image: url($filenameBig);
+      background-image: url($filename-big);
       @include BackgroundSize($width $height);
     }
   }
 }
 
-@mixin BackgroundIcon ($filename, $filenameBig: '', $width: auto, $height: auto) {
+@mixin BackgroundIcon ($filename, $filename-big: '', $width: auto, $height: auto) {
   background-image: data-uri($filename);
   *background-image: url($filename);
   @inclue BackgroundSize($width $height);
 
   @media #{$high-dpi} {
-    background-image: data-uri($filenameBig);
-    *background-image: url($filenameBig);
+    background-image: data-uri($filename-big);
+    *background-image: url($filename-big);
     @include BackgroundSize($width $height);
   }
 }
@@ -381,12 +381,12 @@
   transform: $arguments;
 }
 
-@mixin TransformOrigin ($X: center, $Y: center) {
-  -webkit-transform-origin: $X $Y;
-  -moz-transform-origin: $X $Y;
-  -ms-transform-origin: $X $Y;
-  -o-transform-origin: $X $Y;
-  transform-origin: $X $Y;
+@mixin TransformOrigin ($x: center, $y: center) {
+  -webkit-transform-origin: $x $y;
+  -moz-transform-origin: $x $y;
+  -ms-transform-origin: $x $y;
+  -o-transform-origin: $x $y;
+  transform-origin: $x $y;
 }
 
 @mixin Transition ($arguments: all $transition-duration $transition-ease) {
@@ -419,11 +419,11 @@
 @mixin Skew ($rotation-degree, $rotation-degree2) {
   @include Transform(skew($rotation-degree, $rotation-degree2));
 }
-@mixin Translate ($X:0, $Y:0) {
-  @include Transform(translate($X, $Y));
+@mixin Translate ($x:0, $y:0) {
+  @include Transform(translate($x, $y));
 }
-@mixin Translate3D ($X:0, $Y:0, $Z: 0) {
-  @include Transform(translate($X, $Y, $Z));
+@mixin Translate3D ($x:0, $y:0, $Z: 0) {
+  @include Transform(translate($x, $y, $Z));
 }
 
 
