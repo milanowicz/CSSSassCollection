@@ -3,16 +3,16 @@
 @include describe('Transform') {
   @include it('check Transform output') {
     @include assert {
-      $Arguments: rotate(20deg);
+      $arguments: rotate(20deg);
       @include output {
-        @include Transform($Arguments);
+        @include Transform($arguments);
       }
       @include expect {
-        -webkit-transform: $Arguments;
-        -moz-transform: $Arguments;
-        -ms-transform: $Arguments;
-        -o-transform: $Arguments;
-        transform: $Arguments;
+        -webkit-transform: $arguments;
+        -moz-transform: $arguments;
+        -ms-transform: $arguments;
+        -o-transform: $arguments;
+        transform: $arguments;
       }
     }
   }
@@ -36,64 +36,64 @@
 
   @include it('check Perspective output') {
     @include assert {
-      $Value: 1000;
+      $value: 1000;
       @include output {
-        @include Perspective($Value);
+        @include Perspective($value);
       }
       @include expect {
-        -webkit-perspective: $Value;
-        -moz-perspective: $Value;
-        -ms-perspective: $Value;
-        perspective: $Value;
+        -webkit-perspective: $value;
+        -moz-perspective: $value;
+        -ms-perspective: $value;
+        perspective: $value;
       }
     }
   }
 
   @include it('check Rotation output') {
     @include assert {
-      $Deg: $RotationDeg;
+      $degree: $rotation-degree;
       @include output {
-        @include Rotation($Deg);
+        @include Rotation($degree);
       }
       @include expect {
-        -webkit-transform: rotate($Deg);
-        -moz-transform: rotate($Deg);
-        -ms-transform: rotate($Deg);
-        -o-transform: rotate($Deg);
-        transform: rotate($Deg);
+        -webkit-transform: rotate($degree);
+        -moz-transform: rotate($degree);
+        -ms-transform: rotate($degree);
+        -o-transform: rotate($degree);
+        transform: rotate($degree);
       }
     }
   }
 
   @include it('check Scale output') {
     @include assert {
-      $Ratio: $ScaleRatio;
+      $ratio: $scale-ratio;
       @include output {
-        @include Scale($Ratio);
+        @include Scale($ratio);
       }
       @include expect {
-        -webkit-transform: scale($Ratio);
-        -moz-transform: scale($Ratio);
-        -ms-transform: scale($Ratio);
-        -o-transform: scale($Ratio);
-        transform: scale($Ratio);
+        -webkit-transform: scale($ratio);
+        -moz-transform: scale($ratio);
+        -ms-transform: scale($ratio);
+        -o-transform: scale($ratio);
+        transform: scale($ratio);
       }
     }
   }
 
   @include it('check Skew output') {
     @include assert {
-      $RotationDeg: 15deg;
-      $RotationDeg2: 45deg;
+      $rotation-degree: 15deg;
+      $rotation-degree2: 45deg;
       @include output {
-        @include Skew($RotationDeg, $RotationDeg2);
+        @include Skew($rotation-degree, $rotation-degree2);
       }
       @include expect {
-        -webkit-transform: skew($RotationDeg, $RotationDeg2);
-        -moz-transform: skew($RotationDeg, $RotationDeg2);
-        -ms-transform: skew($RotationDeg, $RotationDeg2);
-        -o-transform: skew($RotationDeg, $RotationDeg2);
-        transform: skew($RotationDeg, $RotationDeg2);
+        -webkit-transform: skew($rotation-degree, $rotation-degree2);
+        -moz-transform: skew($rotation-degree, $rotation-degree2);
+        -ms-transform: skew($rotation-degree, $rotation-degree2);
+        -o-transform: skew($rotation-degree, $rotation-degree2);
+        transform: skew($rotation-degree, $rotation-degree2);
       }
     }
   }

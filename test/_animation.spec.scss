@@ -3,94 +3,94 @@
 @include describe('Animation') {
   @include it('check Animation output') {
     @include assert {
-      $Arguments: ani 1s infinite;
+      $arguments: ani 1s infinite;
       @include output {
-        @include Animation($Arguments);
+        @include Animation($arguments);
       }
       @include expect {
-        -webkit-animation: $Arguments;
-        -moz-animation: $Arguments;
-        -o-animation:$Arguments;
-        animation: $Arguments;
+        -webkit-animation: $arguments;
+        -moz-animation: $arguments;
+        -o-animation:$arguments;
+        animation: $arguments;
       }
     }
   }
 
   @include it('check AnimationDelay output') {
     @include assert {
-      $Arguments: 1s;
+      $arguments: 1s;
       @include output {
-        @include AnimationDelay($Arguments);
+        @include AnimationDelay($arguments);
       }
       @include expect {
-        -webkit-animation-delay: $Arguments;
-        animation-delay: $Arguments;
+        -webkit-animation-delay: $arguments;
+        animation-delay: $arguments;
       }
     }
   }
 
   @include it('check AnimationDirection output') {
     @include assert {
-      $Arguments: normal;
+      $arguments: normal;
       @include output {
-        @include AnimationDirection($Arguments);
+        @include AnimationDirection($arguments);
       }
       @include expect {
-        -webkit-animation-direction: $Arguments;
-        -moz-animation-direction: $Arguments;
-        animation-direction: $Arguments;
+        -webkit-animation-direction: $arguments;
+        -moz-animation-direction: $arguments;
+        animation-direction: $arguments;
       }
     }
   }
 
   @include it('check AnimationDuration output') {
     @include assert {
-      $Arguments: 1s;
+      $arguments: 1s;
       @include output {
-        @include AnimationDuration($Arguments);
+        @include AnimationDuration($arguments);
       }
       @include expect {
-        -webkit-animation-duration: $Arguments;
-        animation-duration: $Arguments;
+        -webkit-animation-duration: $arguments;
+        animation-duration: $arguments;
       }
     }
   }
 
   @include it('check AnimationFillMode output') {
     @include assert {
-      $Arguments: forwards;
+      $arguments: forwards;
       @include output {
-        @include AnimationFillMode($Arguments);
+        @include AnimationFillMode($arguments);
       }
       @include expect {
-        -webkit-animation-fill-mode: $Arguments;
-        animation-fill-mode: $Arguments;
+        -webkit-animation-fill-mode: $arguments;
+        animation-fill-mode: $arguments;
       }
     }
   }
 
   @include it('check AnimationIterationCount output') {
     @include assert {
-      $Arguments: 2;
+      $arguments: 2;
       @include output {
-        @include AnimationIterationCount($Arguments);
+        @include AnimationIterationCount($arguments);
       }
       @include expect {
-        -webkit-animation-iteration-count: $Arguments;
-        animation-iteration-count: $Arguments;
+        -webkit-animation-iteration-count: $arguments;
+        animation-iteration-count: $arguments;
       }
     }
   }
 
   @include it('check AnimationPlayState output') {
     @include assert {
-      $Arguments: running;
+      $arguments: running;
       @include output {
-        @include AnimationPlayState($Arguments);
+        @include AnimationPlayState($arguments);
       }
       @include expect {
-        -webkit-animation-play-state: $Arguments;
-        animation-play-state: $Arguments;
+        -webkit-animation-play-state: $arguments;
+        animation-play-state: $arguments;
       }
     }
   }

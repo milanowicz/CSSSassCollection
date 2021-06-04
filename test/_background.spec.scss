@@ -3,12 +3,12 @@
 @include describe('Background') {
   @include it('check BackgroundOpacity output') {
     @include assert {
-      $Color: $BackgroundColor;
-      $Opacity: $Opacity;
+      $Color: $background-color;
+      $opacity: $opacity;
       $RGBColor: rgb(red($Color), green($Color), blue($Color));
-      $RGBAColor: rgba(red($Color), green($Color), blue($Color), $Opacity);
+      $RGBAColor: rgba(red($Color), green($Color), blue($Color), $opacity);
       @include output {
-        @include BackgroundOpacity($Color, $Opacity);
+        @include BackgroundOpacity($Color, $opacity);
       }
       @include expect {
         background: $RGBColor;
@@ -20,30 +20,30 @@
 
   @include it('check BackgroundSize output') {
     @include assert {
-      $Arguments: cover;
+      $arguments: cover;
       @include output {
-        @include BackgroundSize($Arguments);
+        @include BackgroundSize($arguments);
       }
       @include expect {
-        -webkit-background-size: $Arguments;
-        -moz-background-size: $Arguments;
-        -ms-background-size: $Arguments;
-        -o-background-size: $Arguments;
-        background-size: $Arguments;
+        -webkit-background-size: $arguments;
+        -moz-background-size: $arguments;
+        -ms-background-size: $arguments;
+        -o-background-size: $arguments;
+        background-size: $arguments;
       }
     }
   }
 
   @include it('check BackgroundClip output') {
     @include assert {
-      $Argument: $BackgroundClipType;
+      $argument: $background-clip-type;
       @include output {
-        @include BackgroundClip($Argument);
+        @include BackgroundClip($argument);
       }
       @include expect {
-        -moz-background-clip: $Argument;
-        -webkit-background-clip: $Argument;
-        background-clip: $Argument;
+        -moz-background-clip: $argument;
+        -webkit-background-clip: $argument;
+        background-clip: $argument;
       }
     }
   }
@@ -65,13 +65,13 @@
 
   @include it('check BackgroundVisibility output') {
     @include assert {
-      $Arguments: visible;
+      $arguments: visible;
       @include output {
-        @include BackgroundVisibility($Arguments);
+        @include BackgroundVisibility($arguments);
       }
       @include expect {
-        -webkit-backface-visibility: $Arguments;
-        backface-visibility: $Arguments;
+        -webkit-backface-visibility: $arguments;
+        backface-visibility: $arguments;
       }
     }
   }
@@ -146,52 +146,52 @@
 
   @include it('check LinearGradient output') {
     @include assert {
-      $Arguments: 15deg, transparent 12%, #000000 88%, transparent 99%;
+      $arguments: 15deg, transparent 12%, #000000 88%, transparent 99%;
       @include output {
-        @include LinearGradient($Arguments);
+        @include LinearGradient($arguments);
       }
       @include expect {
-        background: -webkit-gradient($Arguments);
-        background: -webkit-linear-gradient($Arguments);
-        background: -moz-linear-gradient($Arguments);
-        background: -ms-linear-gradient($Arguments);
-        background: -o-linear-gradient($Arguments);
+        background: -webkit-gradient($arguments);
+        background: -webkit-linear-gradient($arguments);
+        background: -moz-linear-gradient($arguments);
+        background: -ms-linear-gradient($arguments);
+        background: -o-linear-gradient($arguments);
       }
     }
   }
 
   @include it('check GradientVertical output') {
     @include assert {
-      $StartColor: $GradientStartColor;
-      $EndColor: $GradientEndColor;
+      $start-color: $gradient-start-color;
+      $end-color: $gradient-end-color;
       @include output {
-        @include GradientVertical($StartColor, $EndColor);
+        @include GradientVertical($start-color, $end-color);
       }
       @include expect {
-        background-color: $StartColor;
-        background: -webkit-gradient(linear, left top, left bottom, from($StartColor), to($EndColor));
-        background: -webkit-linear-gradient(top, $StartColor, $EndColor);
-        background: -moz-linear-gradient(top, $StartColor, $EndColor);
-        background: -ms-linear-gradient(top, $StartColor, $EndColor);
-        background: -o-linear-gradient(top, $StartColor, $EndColor);
+        background-color: $start-color;
+        background: -webkit-gradient(linear, left top, left bottom, from($start-color), to($end-color));
+        background: -webkit-linear-gradient(top, $start-color, $end-color);
+        background: -moz-linear-gradient(top, $start-color, $end-color);
+        background: -ms-linear-gradient(top, $start-color, $end-color);
+        background: -o-linear-gradient(top, $start-color, $end-color);
       }
     }
   }
 
   @include it('check GradientHorizontal output') {
     @include assert {
-      $StartColor: $GradientStartColor;
-      $EndColor: $GradientEndColor;
+      $start-color: $gradient-start-color;
+      $end-color: $gradient-end-color;
       @include output {
-        @include GradientHorizontal($StartColor, $EndColor);
+        @include GradientHorizontal($start-color, $end-color);
       }
       @include expect {
-        background-color: $StartColor;
-        background-image: -webkit-gradient(linear, left top, right top, from($StartColor), to($EndColor));
-        background-image: -webkit-linear-gradient(left, $StartColor, $EndColor);
-        background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
-        background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
-        background-image: -o-linear-gradient(left, $StartColor, $EndColor);
+        background-color: $start-color;
+        background-image: -webkit-gradient(linear, left top, right top, from($start-color), to($end-color));
+        background-image: -webkit-linear-gradient(left, $start-color, $end-color);
+        background-image: -moz-linear-gradient(left, $start-color, $end-color);
+        background-image: -ms-linear-gradient(left, $start-color, $end-color);
+        background-image: -o-linear-gradient(left, $start-color, $end-color);
       }
     }
   }

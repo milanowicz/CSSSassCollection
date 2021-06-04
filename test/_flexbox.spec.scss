@@ -3,9 +3,9 @@
 @include describe('Flexbox') {
   @include it('check Flexbox output') {
     @include assert {
-      $Arguments: flex-grow;
+      $arguments: flex-grow;
       @include output {
-        @include Flexbox($Arguments);
+        @include Flexbox($arguments);
       }
       @include expect {
         display: -webkit-box;
@@ -13,11 +13,11 @@
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
-        -webkit-box-flex: $Arguments;
-        -moz-box-flex:  $Arguments;
-        -webkit-flex:  $Arguments;
-        -ms-flex:  $Arguments;
-        flex:  $Arguments;
+        -webkit-box-flex: $arguments;
+        -moz-box-flex:  $arguments;
+        -webkit-flex:  $arguments;
+        -ms-flex:  $arguments;
+        flex:  $arguments;
       }
     }
   }
@@ -39,16 +39,16 @@
 
   @include it('check FlexboxOrder output') {
     @include assert {
-      $Arguments: 1;
+      $arguments: 1;
       @include output {
-        @include FlexboxOrder($Arguments);
+        @include FlexboxOrder($arguments);
       }
       @include expect {
-        -webkit-box-ordinal-group: $Arguments;
-        -moz-box-ordinal-group: $Arguments;
-        -ms-flex-order: $Arguments;
-        -webkit-order: $Arguments;
-        order: $Arguments;
+        -webkit-box-ordinal-group: $arguments;
+        -moz-box-ordinal-group: $arguments;
+        -ms-flex-order: $arguments;
+        -webkit-order: $arguments;
+        order: $arguments;
       }
     }
   }

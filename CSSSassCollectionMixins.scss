@@ -8,8 +8,8 @@
 //########################################################
 
 @mixin FontFace ($FontName, $FontFile,
-                  $FontWeight: $FontWeight,
-                  $FontStyle: $FontStyle) {
+                  $font-weight: $font-weight,
+                  $font-style: $font-style) {
   @font-face {
     font-family: "#{$FontName}";
     src: url("#{$FontFile}-webfont.eot");
@@ -17,15 +17,15 @@
     url("#{$FontFile}-webfont.woff") format("woff"),
     url("#{$FontFile}-webfont@ttf") format("truetype"),
     url("#{$FontFile}-webfont.svg##{$FontName}") format("svg");
-    font-weight: $FontWeight;
-    font-style: $FontStyle;
+    font-weight: $font-weight;
+    font-style: $font-style;
   }
 }
 
-@mixin FontSize ($FontSize: $FontSize, $Important: false) {
-  $remValue: math.div($FontSize, 16);
-  $pxValue: ($FontSize);
-  @if $Important {
+@mixin FontSize ($font-size: $font-size, $important: false) {
+  $remValue: math.div($font-size, 16);
+  $pxValue: ($font-size);
+  @if $important {
     font-size: #{$pxValue}px !important;
     font-size: #{$remValue}rem !important;
   } @else {
@@ -34,11 +34,11 @@
   }
 }
 
-@mixin LineHeight ($LineHeight: $LineHeight, $Important: false) {
-  $remValue: math.div($LineHeight, 16);
-  $pxValue: ($LineHeight);
+@mixin LineHeight ($line-height: $line-height, $important: false) {
+  $remValue: math.div($line-height, 16);
+  $pxValue: ($line-height);
 
-  @if $Important {
+  @if $important {
     line-height: #{$pxValue}px !important;
     line-height: #{$remValue}rem !important;
   } @else {
@@ -48,33 +48,33 @@
 }
 
 // Font Style Mixins
-@mixin Text ($FontFamily,
-              $FontSize: $FontSize,
-              $Color: $ColorBlack,
-              $FontStyle: $FontStyle,
-              $LineHeight: $LineHeight,
-              $TextTransform: $TextTransform,
-              $FontWeight: $FontWeight) {
+@mixin Text ($font-family,
+              $font-size: $font-size,
+              $color: $color-black,
+              $font-style: $font-style,
+              $line-height: $line-height,
+              $text-transform: $text-transform,
+              $font-weight: $font-weight) {
 
-  font-family: $FontFamily;
-  @include FontSize($FontSize);
-  color: $Color;
-  font-style: $FontStyle;
-  @include LineHeight($LineHeight);
-  text-transform: $TextTransform;
-  font-weight: $FontWeight;
+  font-family: $font-family;
+  @include FontSize($font-size);
+  color: $color;
+  font-style: $font-style;
+  @include LineHeight($line-height);
+  text-transform: $text-transform;
+  font-weight: $font-weight;
 }
 
-@mixin Hyphens ($WordBreak: break-all, $Hyphens: auto) {
-  -ms-word-break: $WordBreak;
-  word-break: $WordBreak;
+@mixin Hyphens ($word-break: break-all, $hyphens: auto) {
+  -ms-word-break: $word-break;
+  word-break: $word-break;
 
   // Non standard for webkit
   word-break: break-word;
 
-  -webkit-hyphens: $Hyphens;
-  -moz-hyphens: $Hyphens;
-  hyphens: $Hyphens;
+  -webkit-hyphens: $hyphens;
+  -moz-hyphens: $hyphens;
+  hyphens: $hyphens;
 }
 
 
@@ -85,23 +85,23 @@
   outline: 0 none;
 }
 
-@mixin MarginPadding ($Margin: 0, $Padding: 0, $Important: false) {
-  @if $Important {
-    margin: $Margin !important;
-    padding: $Padding !important;
+@mixin MarginPadding ($margin: 0, $padding: 0, $important: false) {
+  @if $important {
+    margin: $margin !important;
+    padding: $padding !important;
   } @else {
-    margin: $Margin;
-    padding: $Padding;
+    margin: $margin;
+    padding: $padding;
   }
 }
 
 
 // Background Image or Icon mixins
 
-@mixin BackgroundOpacity ($Color: $BackgroundColor, $Opacity: $Opacity) {
+@mixin BackgroundOpacity ($color: $background-color, $opacity: $opacity) {
 
-  $RGBColor: rgb(red($Color), green($Color), blue($Color));
-  $RGBAColor: rgba(red($Color), green($Color), blue($Color), $Opacity);
+  $RGBColor: rgb(red($color), green($color), blue($color));
+  $RGBAColor: rgba(red($color), green($color), blue($color), $opacity);
 
   background: $RGBColor;
   background: transparent\9;
@@ -111,18 +111,18 @@
   //filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", argb($RGBAColor),argb($RGBAColor)); // IE9 and down
 }
 
-@mixin BackgroundSize ($Arguments) {
-  -webkit-background-size: $Arguments;
-  -moz-background-size: $Arguments;
-  -ms-background-size: $Arguments;
-  -o-background-size: $Arguments;
-  background-size: $Arguments;
+@mixin BackgroundSize ($arguments) {
+  -webkit-background-size: $arguments;
+  -moz-background-size: $arguments;
+  -ms-background-size: $arguments;
+  -o-background-size: $arguments;
+  background-size: $arguments;
 }
 
-@mixin BackgroundClip ($Argument: $BackgroundClipType) {
-  -moz-background-clip: $Argument;
-  -webkit-background-clip: $Argument;
-  background-clip: $Argument;
+@mixin BackgroundClip ($argument: $background-clip-type) {
+  -moz-background-clip: $argument;
+  -webkit-background-clip: $argument;
+  background-clip: $argument;
 }
 
 @mixin BackgroundPosition ($X: 50%, $Y: 50%) {
@@ -131,64 +131,64 @@
   background-position: $X $Y;
 }
 
-@mixin BackgroundVisibility ($Arguments) {
-  -webkit-backface-visibility: $Arguments;
-  backface-visibility: $Arguments;
+@mixin BackgroundVisibility ($arguments) {
+  -webkit-backface-visibility: $arguments;
+  backface-visibility: $arguments;
 }
 
-@mixin BackgroundImage ($Filename, $FilenameBig: '', $Width: auto, $Height: auto) {
-  background-image: url($Filename);
-  @include BackgroundSize($Width $Height);
+@mixin BackgroundImage ($filename, $filenameBig: '', $width: auto, $height: auto) {
+  background-image: url($filename);
+  @include BackgroundSize($width $height);
 
-  @if ($FilenameBig != '') {
-    @media #{$HighDpi} {
-      background-image: url($FilenameBig);
-      @include BackgroundSize($Width $Height);
+  @if ($filenameBig != '') {
+    @media #{$high-dpi} {
+      background-image: url($filenameBig);
+      @include BackgroundSize($width $height);
     }
   }
 }
 
-@mixin BackgroundIcon ($Filename, $FilenameBig: '', $Width: auto, $Height: auto) {
-  background-image: data-uri($Filename);
-  *background-image: url($Filename);
-  @inclue BackgroundSize($Width $Height);
+@mixin BackgroundIcon ($filename, $filenameBig: '', $width: auto, $height: auto) {
+  background-image: data-uri($filename);
+  *background-image: url($filename);
+  @inclue BackgroundSize($width $height);
 
-  @media #{$HighDpi} {
-    background-image: data-uri($FilenameBig);
-    *background-image: url($FilenameBig);
-    @include BackgroundSize($Width $Height);
+  @media #{$high-dpi} {
+    background-image: data-uri($filenameBig);
+    *background-image: url($filenameBig);
+    @include BackgroundSize($width $height);
   }
 }
-@mixin BackgroundIconSize ($Width: auto, $Height: auto) {
-  @include BackgroundSize($Width $Height);
-  @media #{$HighDpi} {
-    @include BackgroundSize($Width $Height);
+@mixin BackgroundIconSize ($width: auto, $height: auto) {
+  @include BackgroundSize($width $height);
+  @media #{$high-dpi} {
+    @include BackgroundSize($width $height);
   }
 }
 
 
 // HTML Box Styles
 
-@mixin BoxSize ($Width, $Height: 0, $Important: false) {
-  @if $Important {
-    width: $Width !important;
-    @if $Height != 0 {
-      height: $Height !important;
+@mixin BoxSize ($width, $height: 0, $important: false) {
+  @if $important {
+    width: $width !important;
+    @if $height != 0 {
+      height: $height !important;
     } @else {
-      height: $Width !important;
+      height: $width !important;
     }
   } @else {
-    width: $Width;
-    @if $Height != 0 {
-      height: $Height;
+    width: $width;
+    @if $height != 0 {
+      height: $height;
     } @else {
-      height: $Width;
+      height: $width;
     }
   }
 }
 
-@mixin BoxSquare ($Size, $Important: false) {
-  @if $Important {
+@mixin BoxSquare ($Size, $important: false) {
+  @if $important {
     width: $Size !important;
     height: $Size !important;
   } @else {
@@ -197,53 +197,53 @@
   }
 }
 
-@mixin Height ($Height) {
-  height: $Height !important;
+@mixin Height ($height) {
+  height: $height !important;
 }
 
-@mixin Width ($Width) {
-  width: $Width !important;
+@mixin Width ($width) {
+  width: $width !important;
 }
 
-@mixin BoxShadow ($Arguments) {
-  -webkit-box-shadow: $Arguments;
-  -moz-box-shadow: $Arguments;
-  box-shadow: $Arguments;
+@mixin BoxShadow ($arguments) {
+  -webkit-box-shadow: $arguments;
+  -moz-box-shadow: $arguments;
+  box-shadow: $arguments;
 }
-@mixin BoxShadowInset ($offset-x:3px, $offset-y:3px, $blur-radius:3px, $spread-radius:3px, $color: $BoxShadowInsetColor) {
+@mixin BoxShadowInset ($offset-x:3px, $offset-y:3px, $blur-radius:3px, $spread-radius:3px, $color: $box-shadow-inset-color) {
   -webkit-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   -moz-box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
   box-shadow: inset $offset-x $offset-y $blur-radius $spread-radius $color;
 }
 
-@mixin BoxRounded ($Radius: $BoxRoundedRaduis) {
-  -webkit-border-radius: $Radius;
-  -moz-border-radius: $Radius;
-  border-radius: $Radius;
+@mixin BoxRounded ($radius: $box-rounded-radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
   @include BackgroundClip(padding-box);
 }
-@mixin BoxRadius ($TopRight: 0, $BottomRight: 0, $BottomLeft: 0, $TopLeft: 0) {
+@mixin BoxRadius ($top-right: 0, $bottom-right: 0, $bottom-left: 0, $top-left: 0) {
 
-  -webkit-border-top-right-radius: $TopRight;
-  -webkit-border-bottom-right-radius: $BottomRight;
-  -webkit-border-bottom-left-radius: $BottomLeft;
-  -webkit-border-top-left-radius: $TopLeft;
+  -webkit-border-top-right-radius: $top-right;
+  -webkit-border-bottom-right-radius: $bottom-right;
+  -webkit-border-bottom-left-radius: $bottom-left;
+  -webkit-border-top-left-radius: $top-left;
 
-  -moz-border-radius-topright: $TopRight;
-  -moz-border-radius-bottomright: $BottomRight;
-  -moz-border-radius-bottomleft: $BottomLeft;
-  -moz-border-radius-topleft: $TopLeft;
+  -moz-border-radius-topright: $top-right;
+  -moz-border-radius-bottomright: $bottom-right;
+  -moz-border-radius-bottomleft: $bottom-left;
+  -moz-border-radius-topleft: $top-left;
 
-  border-top-right-radius: $TopRight;
-  border-bottom-right-radius: $BottomRight;
-  border-bottom-left-radius: $BottomLeft;
-  border-top-left-radius: $TopLeft;
+  border-top-right-radius: $top-right;
+  border-bottom-right-radius: $bottom-right;
+  border-bottom-left-radius: $bottom-left;
+  border-top-left-radius: $top-left;
 
   @include BackgroundClip(padding-box);
 }
 
-@mixin BoxSizing ($Type: $BoxSizingType, $Important: false) {
-  @if $Important {
+@mixin BoxSizing ($Type: $box-sizing-type, $important: false) {
+  @if $important {
     -webkit-box-sizing: $Type !important;
     -moz-box-sizing: $Type !important;
     box-sizing: $Type !important;
@@ -254,37 +254,37 @@
   }
 }
 
-@mixin LinearGradient ($Arguments) {
-  background: -webkit-gradient($Arguments);
-  background: -webkit-linear-gradient($Arguments);
-  background: -moz-linear-gradient($Arguments);
-  background: -ms-linear-gradient($Arguments);
-  background: -o-linear-gradient($Arguments);
+@mixin LinearGradient ($arguments) {
+  background: -webkit-gradient($arguments);
+  background: -webkit-linear-gradient($arguments);
+  background: -moz-linear-gradient($arguments);
+  background: -ms-linear-gradient($arguments);
+  background: -o-linear-gradient($arguments);
 }
 
-@mixin GradientVertical ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
-  background-color: $StartColor;
-  background: -webkit-gradient(linear, left top, left bottom, from($StartColor), to($EndColor));
-  background: -webkit-linear-gradient(top, $StartColor, $EndColor);
-  background: -moz-linear-gradient(top, $StartColor, $EndColor);
-  background: -ms-linear-gradient(top, $StartColor, $EndColor);
-  background: -o-linear-gradient(top, $StartColor, $EndColor);
+@mixin GradientVertical ($start-color: $gradient-start-color, $end-color: $gradient-end-color) {
+  background-color: $start-color;
+  background: -webkit-gradient(linear, left top, left bottom, from($start-color), to($end-color));
+  background: -webkit-linear-gradient(top, $start-color, $end-color);
+  background: -moz-linear-gradient(top, $start-color, $end-color);
+  background: -ms-linear-gradient(top, $start-color, $end-color);
+  background: -o-linear-gradient(top, $start-color, $end-color);
 }
-@mixin GradientHorizontal ($StartColor: $GradientStartColor, $EndColor: $GradientEndColor) {
-  background-color: $StartColor;
-  background-image: -webkit-gradient(linear, left top, right top, from($StartColor), to($EndColor));
-  background-image: -webkit-linear-gradient(left, $StartColor, $EndColor);
-  background-image: -moz-linear-gradient(left, $StartColor, $EndColor);
-  background-image: -ms-linear-gradient(left, $StartColor, $EndColor);
-  background-image: -o-linear-gradient(left, $StartColor, $EndColor);
+@mixin GradientHorizontal ($start-color: $gradient-start-color, $end-color: $gradient-end-color) {
+  background-color: $start-color;
+  background-image: -webkit-gradient(linear, left top, right top, from($start-color), to($end-color));
+  background-image: -webkit-linear-gradient(left, $start-color, $end-color);
+  background-image: -moz-linear-gradient(left, $start-color, $end-color);
+  background-image: -ms-linear-gradient(left, $start-color, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $end-color);
 }
 
-@mixin Opacity ($Opacity: $Opacity) {
-  -moz-opacity: $Opacity;
-  -khtml-opacity: $Opacity;
-  -webkit-opacity: $Opacity;
-  opacity: $Opacity;
-  $opperc: ($Opacity * 100);
+@mixin Opacity ($opacity: $opacity) {
+  -moz-opacity: $opacity;
+  -khtml-opacity: $opacity;
+  -webkit-opacity: $opacity;
+  opacity: $opacity;
+  $opperc: ($opacity * 100);
   //-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opperc})";
   //filter: ~"alpha(opacity=#{$opperc})";
 }
@@ -300,85 +300,85 @@
   display: flex;
 }
 
-@mixin Flexbox ($Arguments) {
+@mixin Flexbox ($arguments) {
   @include FlexboxDisplay();
-  -webkit-box-flex: $Arguments;
-  -moz-box-flex:  $Arguments;
-  -webkit-flex:  $Arguments;
-  -ms-flex:  $Arguments;
-  flex:  $Arguments;
+  -webkit-box-flex: $arguments;
+  -moz-box-flex:  $arguments;
+  -webkit-flex:  $arguments;
+  -ms-flex:  $arguments;
+  flex:  $arguments;
 }
 
-@mixin FlexboxOrder ($Arguments) {
-  -webkit-box-ordinal-group: $Arguments;
-  -moz-box-ordinal-group: $Arguments;
-  -ms-flex-order: $Arguments;
-  -webkit-order: $Arguments;
-  order: $Arguments;
+@mixin FlexboxOrder ($arguments) {
+  -webkit-box-ordinal-group: $arguments;
+  -moz-box-ordinal-group: $arguments;
+  -ms-flex-order: $arguments;
+  -webkit-order: $arguments;
+  order: $arguments;
 }
 
 
 // CSS3 Animation, Transform and Transition mixins
 
-@mixin Animation ($Arguments) {
-  -webkit-animation: $Arguments;
-  -moz-animation: $Arguments;
-  -o-animation:$Arguments;
-  animation: $Arguments;
+@mixin Animation ($arguments) {
+  -webkit-animation: $arguments;
+  -moz-animation: $arguments;
+  -o-animation:$arguments;
+  animation: $arguments;
 }
 
-@mixin AnimationDelay ($Arguments) {
-  -webkit-animation-delay: $Arguments;
-  animation-delay: $Arguments;
+@mixin AnimationDelay ($arguments) {
+  -webkit-animation-delay: $arguments;
+  animation-delay: $arguments;
 }
 
-@mixin AnimationDirection ($Arguments) {
-  -webkit-animation-direction: $Arguments;
-  -moz-animation-direction: $Arguments;
-  animation-direction: $Arguments;
+@mixin AnimationDirection ($arguments) {
+  -webkit-animation-direction: $arguments;
+  -moz-animation-direction: $arguments;
+  animation-direction: $arguments;
 }
 
-@mixin AnimationDuration ($Arguments) {
-  -webkit-animation-duration: $Arguments;
-  animation-duration: $Arguments;
+@mixin AnimationDuration ($arguments) {
+  -webkit-animation-duration: $arguments;
+  animation-duration: $arguments;
 }
 
-@mixin AnimationFillMode ($Arguments) {
-  -webkit-animation-fill-mode: $Arguments;
-  animation-fill-mode: $Arguments;
+@mixin AnimationFillMode ($arguments) {
+  -webkit-animation-fill-mode: $arguments;
+  animation-fill-mode: $arguments;
 }
 
-@mixin AnimationIterationCount ($Arguments) {
-  -webkit-animation-iteration-count: $Arguments;
-  animation-iteration-count: $Arguments;
+@mixin AnimationIterationCount ($arguments) {
+  -webkit-animation-iteration-count: $arguments;
+  animation-iteration-count: $arguments;
 }
 
-@mixin AnimationPlayState ($Arguments) {
-  -webkit-animation-play-state: $Arguments;
-  animation-play-state: $Arguments;
+@mixin AnimationPlayState ($arguments) {
+  -webkit-animation-play-state: $arguments;
+  animation-play-state: $arguments;
 }
 
-@mixin Keyframes ($AnimationName) {
-  @-webkit-keyframes #{$AnimationName} {
+@mixin Keyframes ($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
     @content;
   }
-  @-moz-keyframes #{$AnimationName} {
+  @-moz-keyframes #{$animation-name} {
     @content;
   }
-  @-o-keyframes #{$AnimationName} {
+  @-o-keyframes #{$animation-name} {
     @content;
   }
-  @keyframes #{$AnimationName} {
+  @keyframes #{$animation-name} {
     @content;
   }
 }
 
-@mixin Transform ($Arguments) {
-  -webkit-transform: $Arguments;
-  -moz-transform: $Arguments;
-  -ms-transform: $Arguments;
-  -o-transform: $Arguments;
-  transform: $Arguments;
+@mixin Transform ($arguments) {
+  -webkit-transform: $arguments;
+  -moz-transform: $arguments;
+  -ms-transform: $arguments;
+  -o-transform: $arguments;
+  transform: $arguments;
 }
 
 @mixin TransformOrigin ($X: center, $Y: center) {
@@ -389,35 +389,35 @@
   transform-origin: $X $Y;
 }
 
-@mixin Transition ($Arguments: all $TransitionDuration $TransitionEase) {
-  -webkit-transition: $Arguments;
-  -moz-transition: $Arguments;
-  -o-transition: $Arguments;
-  transition: $Arguments;
+@mixin Transition ($arguments: all $transition-duration $transition-ease) {
+  -webkit-transition: $arguments;
+  -moz-transition: $arguments;
+  -o-transition: $arguments;
+  transition: $arguments;
 }
 
-@mixin TransitionDuration ($Duration: $TransitionDuration) {
-  -moz-transition-duration: $Duration;
-  -webkit-transition-duration: $Duration;
-  -o-transition-duration: $Duration;
-  transition-duration: $Duration;
+@mixin TransitionDuration ($duration: $transition-duration) {
+  -moz-transition-duration: $duration;
+  -webkit-transition-duration: $duration;
+  -o-transition-duration: $duration;
+  transition-duration: $duration;
 }
 
-@mixin Perspective ($Value: 1000) {
-  -webkit-perspective: $Value;
-  -moz-perspective: $Value;
-  -ms-perspective: $Value;
-  perspective: $Value;
+@mixin Perspective ($value: 1000) {
+  -webkit-perspective: $value;
+  -moz-perspective: $value;
+  -ms-perspective: $value;
+  perspective: $value;
 }
 
-@mixin Rotation ($Deg: $RotationDeg) {
-  @include Transform(rotate($Deg));
+@mixin Rotation ($degree: $rotation-degree) {
+  @include Transform(rotate($degree));
 }
-@mixin Scale ($Ratio: $ScaleRatio){
-  @include Transform(scale($Ratio));
+@mixin Scale ($ratio: $scale-ratio){
+  @include Transform(scale($ratio));
 }
-@mixin Skew ($RotationDeg, $RotationDeg2) {
-  @include Transform(skew($RotationDeg, $RotationDeg2));
+@mixin Skew ($rotation-degree, $rotation-degree2) {
+  @include Transform(skew($rotation-degree, $rotation-degree2));
 }
 @mixin Translate ($X:0, $Y:0) {
   @include Transform(translate($X, $Y));
@@ -457,8 +457,8 @@
   }
 }
 
-@mixin FormPlaceholderColor ($Color: $ColorBlack) {
+@mixin FormPlaceholderColor ($color: $color-black) {
   @include FormInputPlaceholder() {
-    color: $Color;
+    color: $color;
   }
 }

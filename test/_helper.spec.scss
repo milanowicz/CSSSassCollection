@@ -68,14 +68,14 @@
 
   @include it('check BoxShadow output') {
     @include assert {
-      $Arguments: 1px solid;
+      $arguments: 1px solid;
       @include output {
-        @include BoxShadow($Arguments);
+        @include BoxShadow($arguments);
       }
       @include expect {
-        -webkit-box-shadow: $Arguments;
-        -moz-box-shadow: $Arguments;
-        box-shadow: $Arguments;
+        -webkit-box-shadow: $arguments;
+        -moz-box-shadow: $arguments;
+        box-shadow: $arguments;
       }
     }
   }
@@ -86,7 +86,7 @@
       $offset-y: 3px;
       $blur-radius: 3px;
       $spread-radius: 3px;
-      $color: $BoxShadowInsetColor;
+      $color: $box-shadow-inset-color;
       @include output {
         @include BoxShadowInset($offset-x, $offset-y, $blur-radius, $spread-radius, $color);
       }
@@ -100,58 +100,58 @@
 
   @include it('check BoxRounded output') {
     @include assert {
-      $Radius: $BoxRoundedRaduis;
-      $Argument: $BackgroundClipType;
+      $radius: $box-rounded-radius;
+      $argument: $background-clip-type;
       @include output {
-        @include BoxRounded($Radius);
+        @include BoxRounded($radius);
       }
       @include expect {
-        -webkit-border-radius: $Radius;
-        -moz-border-radius: $Radius;
-        border-radius: $Radius;
-        -moz-background-clip: $Argument;
-        -webkit-background-clip: $Argument;
-        background-clip: $Argument;
+        -webkit-border-radius: $radius;
+        -moz-border-radius: $radius;
+        border-radius: $radius;
+        -moz-background-clip: $argument;
+        -webkit-background-clip: $argument;
+        background-clip: $argument;
       }
     }
   }
 
   @include it('check BoxRadius output') {
     @include assert {
-      $TopRight: 10px;
-      $BottomRight: 10px;
-      $BottomLeft: 10px;
-      $TopLeft: 10px;
-      $Argument: $BackgroundClipType;
+      $top-right: 10px;
+      $bottom-right: 10px;
+      $bottom-left: 10px;
+      $top-left: 10px;
+      $argument: $background-clip-type;
       @include output {
-        @include BoxRadius($TopRight, $BottomRight, $BottomLeft, $TopLeft);
+        @include BoxRadius($top-right, $bottom-right, $bottom-left, $top-left);
       }
       @include expect {
-        -webkit-border-top-right-radius: $TopRight;
-        -webkit-border-bottom-right-radius: $BottomRight;
-        -webkit-border-bottom-left-radius: $BottomLeft;
-        -webkit-border-top-left-radius: $TopLeft;
+        -webkit-border-top-right-radius: $top-right;
+        -webkit-border-bottom-right-radius: $bottom-right;
+        -webkit-border-bottom-left-radius: $bottom-left;
+        -webkit-border-top-left-radius: $top-left;
 
-        -moz-border-radius-topright: $TopRight;
-        -moz-border-radius-bottomright: $BottomRight;
-        -moz-border-radius-bottomleft: $BottomLeft;
-        -moz-border-radius-topleft: $TopLeft;
+        -moz-border-radius-topright: $top-right;
+        -moz-border-radius-bottomright: $bottom-right;
+        -moz-border-radius-bottomleft: $bottom-left;
+        -moz-border-radius-topleft: $top-left;
 
-        border-top-right-radius: $TopRight;
-        border-bottom-right-radius: $BottomRight;
-        border-bottom-left-radius: $BottomLeft;
-        border-top-left-radius: $TopLeft;
+        border-top-right-radius: $top-right;
+        border-bottom-right-radius: $bottom-right;
+        border-bottom-left-radius: $bottom-left;
+        border-top-left-radius: $top-left;
 
-        -moz-background-clip: $Argument;
-        -webkit-background-clip: $Argument;
-        background-clip: $Argument;
+        -moz-background-clip: $argument;
+        -webkit-background-clip: $argument;
+        background-clip: $argument;
       }
     }
   }
 
   @include it('check BoxSizing output') {
     @include assert {
-      $Type: $BoxSizingType;
+      $Type: $box-sizing-type;
       @include output {
         @include BoxSizing($Type);
         @include BoxSizing($Type, true);
@@ -195,15 +195,15 @@
   }
   @include it('check Opacity output') {
     @include assert {
-      $Opacity: $Opacity;
+      $opacity: $opacity;
       @include output {
-        @include Opacity($Opacity);
+        @include Opacity($opacity);
       }
       @include expect {
-        -moz-opacity: $Opacity;
-        -khtml-opacity: $Opacity;
-        -webkit-opacity: $Opacity;
-        opacity: $Opacity;
+        -moz-opacity: $opacity;
+        -khtml-opacity: $opacity;
+        -webkit-opacity: $opacity;
+        opacity: $opacity;
       }
     }
   }
