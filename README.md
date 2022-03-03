@@ -29,7 +29,7 @@ Install it by Yarn or NPM
 
 Sample for SASS:
 
-```sass
+```scss
 @import '~csssasscollection/CSSSassCollectionDefinitions';
 @import '~csssasscollection/CSSSassCollectionMixins';
 ```
@@ -42,7 +42,7 @@ Sass Mixin Toolkit for generate CSS2/3 StyleSheet files.
 
 ## CSSSassCollectionDefinitions.scss
 
-```sass
+```scss
 $high-dpi: "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
 
 // Colors
