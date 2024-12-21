@@ -10,23 +10,25 @@ jobs:
       fail-fast: false
       matrix:
         node-version:
-          - "12.x"
-          - "14.x"
-          - "16.x"
+          - 18
+          - 20
+          - 22
 
     steps:
     - name: "Checkout"
-      uses: actions/checkout@v1
+      uses: actions/checkout@v4
 
     - name: "Use Node.js ${{ matrix.node-version }}"
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: "${{ matrix.node-version }}"
 
     - name: "Install"
       run: yarn install
+
     - name: "Check for unused variables"
       run: npm run sass-sniff
+
     - name: "Run Jest tests"
       run: npm run test
 
