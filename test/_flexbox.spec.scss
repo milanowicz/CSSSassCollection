@@ -1,13 +1,13 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Flexbox') {
-  @include it('check Flexbox output') {
-    @include assert {
+@include true-describe('Flexbox') {
+  @include true-it('check Flexbox output') {
+    @include true-assert {
       $arguments: flex-grow;
-      @include output {
+      @include true-output {
         @include Flexbox($arguments);
       }
-      @include expect {
+      @include true-expect {
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -22,12 +22,12 @@
     }
   }
 
-  @include it('check FlexboxDisplay output') {
-    @include assert {
-      @include output {
+  @include true-it('check FlexboxDisplay output') {
+    @include true-assert {
+      @include true-output {
         @include FlexboxDisplay();
       }
-      @include expect {
+      @include true-expect {
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -37,13 +37,13 @@
     }
   }
 
-  @include it('check FlexboxOrder output') {
-    @include assert {
+  @include true-it('check FlexboxOrder output') {
+    @include true-assert {
       $arguments: 1;
-      @include output {
+      @include true-output {
         @include FlexboxOrder($arguments);
       }
-      @include expect {
+      @include true-expect {
         -webkit-box-ordinal-group: $arguments;
         -moz-box-ordinal-group: $arguments;
         -ms-flex-order: $arguments;

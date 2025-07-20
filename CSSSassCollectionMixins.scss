@@ -2,6 +2,7 @@
 // Author: Milanowicz
 // Description: Sass Mixin Collection
 @use "sass:math";
+@use "CSSSassCollectionDefinitions" as *;
 
 //########################################################
 //##               Sass Mixin Toolkit File              ##
@@ -151,7 +152,7 @@
 @mixin BackgroundIcon ($filename, $filename-big: '', $width: auto, $height: auto) {
   background-image: data-uri($filename);
   *background-image: url($filename);
-  @inclue BackgroundSize($width $height);
+  @include BackgroundSize($width $height);
 
   @media #{$high-dpi} {
     background-image: data-uri($filename-big);

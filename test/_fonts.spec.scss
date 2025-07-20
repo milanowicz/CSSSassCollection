@@ -1,13 +1,13 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Fonts') {
-  @include it('check FontSize output') {
-    @include assert {
-      @include output {
+@include true-describe('Fonts') {
+  @include true-it('check FontSize output') {
+    @include true-assert {
+      @include true-output {
         @include FontSize(16);
         @include FontSize(16, true);
       }
-      @include expect {
+      @include true-expect {
         font-size: 16px;
         font-size: 1rem;
         font-size: 16px !important;
@@ -16,13 +16,13 @@
     }
   }
 
-  @include it('check LineHeight output') {
-    @include assert {
-      @include output {
+  @include true-it('check LineHeight output') {
+    @include true-assert {
+      @include true-output {
         @include LineHeight(16);
         @include LineHeight(16, true);
       }
-      @include expect {
+      @include true-expect {
         line-height: 16px;
         line-height: 1rem;
         line-height: 16px !important;
@@ -31,12 +31,12 @@
     }
   }
 
-  @include it('check Text output') {
-    @include assert {
-      @include output {
+  @include true-it('check Text output') {
+    @include true-assert {
+      @include true-output {
         @include Text('Arial');
       }
-      @include expect {
+      @include true-expect {
         font-family: 'Arial';
         font-size: 16px;
         font-size: 1rem;
@@ -50,12 +50,12 @@
     }
   }
 
-  @include it('check Hyphens output') {
-    @include assert {
-      @include output {
+  @include true-it('check Hyphens output') {
+    @include true-assert {
+      @include true-output {
         @include Hyphens();
       }
-      @include expect {
+      @include true-expect {
         -ms-word-break: break-all;
         word-break: break-all;
         word-break: break-word;

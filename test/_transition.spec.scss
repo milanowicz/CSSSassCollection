@@ -1,13 +1,13 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Transition') {
-  @include it('check Transition output') {
-    @include assert {
+@include true-describe('Transition') {
+  @include true-it('check Transition output') {
+    @include true-assert {
       $arguments: all $transition-duration $transition-ease;
-      @include output {
+      @include true-output {
         @include Transition($arguments);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transition: $arguments;
         -moz-transition: $arguments;
         -o-transition: $arguments;
@@ -16,13 +16,13 @@
     }
   }
 
-  @include it('check TransitionDuration output') {
-    @include assert {
+  @include true-it('check TransitionDuration output') {
+    @include true-assert {
       $duration: $transition-duration;
-      @include output {
+      @include true-output {
         @include TransitionDuration($duration);
       }
-      @include expect {
+      @include true-expect {
         -moz-transition-duration: $duration;
         -webkit-transition-duration: $duration;
         -o-transition-duration: $duration;

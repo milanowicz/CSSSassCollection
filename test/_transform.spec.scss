@@ -1,13 +1,13 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Transform') {
-  @include it('check Transform output') {
-    @include assert {
+@include true-describe('Transform') {
+  @include true-it('check Transform output') {
+    @include true-assert {
       $arguments: rotate(20deg);
-      @include output {
+      @include true-output {
         @include Transform($arguments);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: $arguments;
         -moz-transform: $arguments;
         -ms-transform: $arguments;
@@ -17,14 +17,14 @@
     }
   }
 
-  @include it('check TransformOrigin output') {
-    @include assert {
+  @include true-it('check TransformOrigin output') {
+    @include true-assert {
       $x: center;
       $y: center;
-      @include output {
+      @include true-output {
         @include TransformOrigin($x, $y);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform-origin: $x $y;
         -moz-transform-origin: $x $y;
         -ms-transform-origin: $x $y;
@@ -34,13 +34,13 @@
     }
   }
 
-  @include it('check Perspective output') {
-    @include assert {
+  @include true-it('check Perspective output') {
+    @include true-assert {
       $value: 1000;
-      @include output {
+      @include true-output {
         @include Perspective($value);
       }
-      @include expect {
+      @include true-expect {
         -webkit-perspective: $value;
         -moz-perspective: $value;
         -ms-perspective: $value;
@@ -49,13 +49,13 @@
     }
   }
 
-  @include it('check Rotation output') {
-    @include assert {
+  @include true-it('check Rotation output') {
+    @include true-assert {
       $degree: $rotation-degree;
-      @include output {
+      @include true-output {
         @include Rotation($degree);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: rotate($degree);
         -moz-transform: rotate($degree);
         -ms-transform: rotate($degree);
@@ -65,13 +65,13 @@
     }
   }
 
-  @include it('check Scale output') {
-    @include assert {
+  @include true-it('check Scale output') {
+    @include true-assert {
       $ratio: $scale-ratio;
-      @include output {
+      @include true-output {
         @include Scale($ratio);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: scale($ratio);
         -moz-transform: scale($ratio);
         -ms-transform: scale($ratio);
@@ -81,14 +81,14 @@
     }
   }
 
-  @include it('check Skew output') {
-    @include assert {
+  @include true-it('check Skew output') {
+    @include true-assert {
       $rotation-degree: 15deg;
       $rotation-degree2: 45deg;
-      @include output {
+      @include true-output {
         @include Skew($rotation-degree, $rotation-degree2);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: skew($rotation-degree, $rotation-degree2);
         -moz-transform: skew($rotation-degree, $rotation-degree2);
         -ms-transform: skew($rotation-degree, $rotation-degree2);
@@ -98,14 +98,14 @@
     }
   }
 
-  @include it('check Translate output') {
-    @include assert {
+  @include true-it('check Translate output') {
+    @include true-assert {
       $x: 20;
       $y: 10;
-      @include output {
+      @include true-output {
         @include Translate($x, $y);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: translate($x, $y);
         -moz-transform: translate($x, $y);
         -ms-transform: translate($x, $y);
@@ -115,15 +115,15 @@
     }
   }
 
-  @include it('check Translate3D output') {
-    @include assert {
+  @include true-it('check Translate3D output') {
+    @include true-assert {
       $x: 20;
       $y: 10;
       $Z: 30;
-      @include output {
+      @include true-output {
         @include Translate3D($x, $y, $Z);
       }
-      @include expect {
+      @include true-expect {
         -webkit-transform: translate($x, $y, $Z);
         -moz-transform: translate($x, $y, $Z);
         -ms-transform: translate($x, $y, $Z);

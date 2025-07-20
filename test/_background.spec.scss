@@ -1,16 +1,16 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Background') {
-  @include it('check BackgroundOpacity output') {
-    @include assert {
+@include true-describe('Background') {
+  @include true-it('check BackgroundOpacity output') {
+    @include true-assert {
       $Color: $background-color;
       $opacity: $opacity;
       $RGBColor: rgb(red($Color), green($Color), blue($Color));
       $RGBAColor: rgba(red($Color), green($Color), blue($Color), $opacity);
-      @include output {
+      @include true-output {
         @include BackgroundOpacity($Color, $opacity);
       }
-      @include expect {
+      @include true-expect {
         background: $RGBColor;
         background: transparent\9;
         background: $RGBAColor;
@@ -18,13 +18,13 @@
     }
   }
 
-  @include it('check BackgroundSize output') {
-    @include assert {
+  @include true-it('check BackgroundSize output') {
+    @include true-assert {
       $arguments: cover;
-      @include output {
+      @include true-output {
         @include BackgroundSize($arguments);
       }
-      @include expect {
+      @include true-expect {
         -webkit-background-size: $arguments;
         -moz-background-size: $arguments;
         -ms-background-size: $arguments;
@@ -34,13 +34,13 @@
     }
   }
 
-  @include it('check BackgroundClip output') {
-    @include assert {
+  @include true-it('check BackgroundClip output') {
+    @include true-assert {
       $argument: $background-clip-type;
-      @include output {
+      @include true-output {
         @include BackgroundClip($argument);
       }
-      @include expect {
+      @include true-expect {
         -moz-background-clip: $argument;
         -webkit-background-clip: $argument;
         background-clip: $argument;
@@ -48,14 +48,14 @@
     }
   }
 
-  @include it('check BackgroundPosition output') {
-    @include assert {
+  @include true-it('check BackgroundPosition output') {
+    @include true-assert {
       $x: 50%;
       $y: 50%;
-      @include output {
+      @include true-output {
         @include BackgroundPosition($x, $y);
       }
-      @include expect {
+      @include true-expect {
         background-position-x: $x;
         background-position-y: $y;
         background-position: $x $y;
@@ -63,26 +63,26 @@
     }
   }
 
-  @include it('check BackgroundVisibility output') {
-    @include assert {
+  @include true-it('check BackgroundVisibility output') {
+    @include true-assert {
       $arguments: visible;
-      @include output {
+      @include true-output {
         @include BackgroundVisibility($arguments);
       }
-      @include expect {
+      @include true-expect {
         -webkit-backface-visibility: $arguments;
         backface-visibility: $arguments;
       }
     }
   }
 
-  @include it('check BackgroundImage output') {
-    @include assert {
-      @include output {
+  @include true-it('check BackgroundImage output') {
+    @include true-assert {
+      @include true-output {
         @include BackgroundImage('/test.img', '/testBig.img', 50px, 100px);
         @include BackgroundImage('/test.img');
       }
-      @include expect {
+      @include true-expect {
         background-image: url('/test.img');
         -webkit-background-size: 50px 100px;
         -moz-background-size: 50px 100px;
@@ -109,13 +109,13 @@
   }
 
 
-  @include it('check BackgroundIconSize output') {
-    @include assert {
-      @include output {
+  @include true-it('check BackgroundIconSize output') {
+    @include true-assert {
+      @include true-output {
         @include BackgroundIconSize();
         @include BackgroundIconSize(50px, 100px);
       }
-      @include expect {
+      @include true-expect {
         -webkit-background-size: auto auto;
         -moz-background-size: auto auto;
         -ms-background-size: auto auto;
@@ -144,13 +144,13 @@
     }
   }
 
-  @include it('check LinearGradient output') {
-    @include assert {
+  @include true-it('check LinearGradient output') {
+    @include true-assert {
       $arguments: 15deg, transparent 12%, #000000 88%, transparent 99%;
-      @include output {
+      @include true-output {
         @include LinearGradient($arguments);
       }
-      @include expect {
+      @include true-expect {
         background: -webkit-gradient($arguments);
         background: -webkit-linear-gradient($arguments);
         background: -moz-linear-gradient($arguments);
@@ -160,14 +160,14 @@
     }
   }
 
-  @include it('check GradientVertical output') {
-    @include assert {
+  @include true-it('check GradientVertical output') {
+    @include true-assert {
       $start-color: $gradient-start-color;
       $end-color: $gradient-end-color;
-      @include output {
+      @include true-output {
         @include GradientVertical($start-color, $end-color);
       }
-      @include expect {
+      @include true-expect {
         background-color: $start-color;
         background: -webkit-gradient(linear, left top, left bottom, from($start-color), to($end-color));
         background: -webkit-linear-gradient(top, $start-color, $end-color);
@@ -178,14 +178,14 @@
     }
   }
 
-  @include it('check GradientHorizontal output') {
-    @include assert {
+  @include true-it('check GradientHorizontal output') {
+    @include true-assert {
       $start-color: $gradient-start-color;
       $end-color: $gradient-end-color;
-      @include output {
+      @include true-output {
         @include GradientHorizontal($start-color, $end-color);
       }
-      @include expect {
+      @include true-expect {
         background-color: $start-color;
         background-image: -webkit-gradient(linear, left top, right top, from($start-color), to($end-color));
         background-image: -webkit-linear-gradient(left, $start-color, $end-color);

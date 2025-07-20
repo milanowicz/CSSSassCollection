@@ -1,14 +1,14 @@
-@import 'sass-tests';
+@use 'sass-tests' as *;
 
-@include describe('Forms') {
-  @include it('check FormInputPlaceholder output') {
-    @include assert {
-      @include output {
+@include true-describe('Forms') {
+  @include true-it('check FormInputPlaceholder output') {
+    @include true-assert {
+      @include true-output {
         @include FormInputPlaceholder() {
           font-family: Arial;
         }
       }
-      @include expect {
+      @include true-expect {
         &::-moz-placeholder {
           font-family: Arial;
         }
@@ -25,14 +25,14 @@
     }
   }
 
-  @include it('check FormPlaceholderColor output') {
-    @include assert {
-      @include output {
+  @include true-it('check FormPlaceholderColor output') {
+    @include true-assert {
+      @include true-output {
         @include FormPlaceholderColor();
 
         @include FormPlaceholderColor(#FFFFFF);
       }
-      @include expect {
+      @include true-expect {
         &::-moz-placeholder {
           color: #000000;
         }
