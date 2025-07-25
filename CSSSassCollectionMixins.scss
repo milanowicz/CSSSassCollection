@@ -150,12 +150,12 @@
 }
 
 @mixin BackgroundIcon ($filename, $filename-big: '', $width: auto, $height: auto) {
-  background-image: data-uri($filename);
+  background-image: url(data:image/png;base64,#{$filename});
   *background-image: url($filename);
   @include BackgroundSize($width $height);
 
   @media #{$high-dpi} {
-    background-image: data-uri($filename-big);
+    background-image: url(data:image/png;base64,#{$filename-big});
     *background-image: url($filename-big);
     @include BackgroundSize($width $height);
   }
